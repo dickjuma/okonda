@@ -1,5 +1,5 @@
 "use client";
-
+import "./globals.css"
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import {
@@ -16,7 +16,9 @@ import {
   CheckCircle,
   Phone,
   MapPin,
-  Zap
+  
+  Zap,
+  
 } from "lucide-react";
 
 /* -------------------- DATA -------------------- */
@@ -59,13 +61,56 @@ const navLinks = [
 ];
 
 const servicesData = [
-  { title: "Structural Design & Analysis", desc: "Safe, efficient, and sustainable structural solutions.", icon: Building2 },
-  { title: "Project Management & Coordination", desc: "End-to-end planning, risk mitigation, and seamless coordination.", icon: Briefcase },
-  { title: "Feasibility Studies & Due Diligence", desc: "Technical, financial, and regulatory evaluation.", icon: Search },
-  { title: "Expert Witness Services", desc: "Impartial technical reporting and litigation support.", icon: Users },
-  { title: "Site Supervision & Engineering", desc: "Quality control, compliance, and safety assurance on site.", icon: CheckCircle },
-  { title: "Consultancy", desc: "Professional civil & structural advisory for design and compliance.", icon: Zap }
-];
+  {
+    title: "Structural Design and Analysis",
+    desc: "Safe, efficient, and sustainable structural solutions for buildings and infrastructure.",
+    icon: Building2
+  },
+  {
+    title: "Project Management and Coordination",
+    desc: "End-to-end planning, scheduling, coordination, and risk control.",
+    icon: Briefcase
+  },
+  {
+    title: "Feasibility Studies and Due Diligence",
+    desc: "Technical, financial, and regulatory feasibility evaluation.",
+    icon: Search
+  },
+  {
+    title: "Expert Witness Services",
+    desc: "Independent engineering reports and litigation support.",
+    icon: Users
+  },
+  {
+    title: "Site Supervision and Engineering",
+    desc: "On-site quality control, compliance, and safety supervision.",
+    icon: CheckCircle
+  },
+  {
+    title: "Consultancy",
+    desc: "Professional civil & structural engineering advisory services.",
+    icon: Zap
+  }
+]
+function ServicesSection() {
+  const [search, setSearch] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [filteredServices, setFilteredServices] = useState(servicesData);
+
+  useEffect(() => {
+    setLoading(true);
+    const timer = setTimeout(() => {
+      setFilteredServices(
+        servicesData.filter(service =>
+          service.title.toLowerCase().includes(search.toLowerCase()) ||
+          service.desc.toLowerCase().includes(search.toLowerCase())
+        )
+      );
+      setLoading(false);
+    }, 300);
+
+    return () => clearTimeout(timer);
+  }, [search]);}
 
 const projectsData = [
   { name: "Residential High-Rise", type: "Housing" },
@@ -76,10 +121,23 @@ const projectsData = [
 ];
 
 const teamData = [
-  { name: "LORRIAN ANDWATI", role: "Founder / Principal Engineer" },
-  { name: "Team Member 2", role: "Project Engineer" },
-  { name: "Team Member 3", role: "Site Supervisor" }
+  {
+    name: "LORRIAN ANDWATI",
+    role: "Founder / Principal Engineer",
+    image: "/teams/lorian.jpg"
+  },
+  {
+     name: "LORRIAN ANDWATI",
+    role: "Founder / Principal Engineer",
+    image: "/teams/lorian.jpg"
+  },
+  {
+   name: "LORRIAN ANDWATI",
+    role: "Founder / Principal Engineer",
+    image: "/teams/lorian.jpg"
+  }
 ];
+
 
 /* -------------------- PAGE -------------------- */
 export default function Page() {
@@ -107,65 +165,176 @@ export default function Page() {
     <main className="scroll-smooth font-sans bg-gray-50 text-gray-800">
 
       {/* Navbar */}
-      <nav className="fixed top-0 w-full bg-white/95 backdrop-blur z-50 border-b shadow-md">
-        <div className="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
-          <a href="#home" className="flex items-center gap-2 font-extrabold text-xl text-gray-800">
-            <img src="/logo-placeholder.svg" alt="Logo" className="h-9 w-9" />
-            {company.shortName}
+      {/* ================= TOP INFO BAR ================= */}
+<div className="fixed top-0 w-full z-[60] bg-slate-900 text-gray-200 text-sm">
+  <div className="max-w-7xl mx-auto flex justify-between items-center px-6 py-2">
+
+    {/* Left: Contact Info */}
+    <div className="flex items-center gap-6">
+      <div className="hidden sm:flex items-center gap-2">
+        <Mail size={14} className="text-teal-400" />
+        <span>{company.email}</span>
+      </div>
+
+      <div className="flex items-center gap-2">
+        <Phone size={14} className="text-teal-400" />
+        <span>{company.phone}</span>
+      </div>
+    </div>
+
+    {/* Right: Social Icons */}
+    <div className="flex items-center gap-4">
+      <a href="#" className="hover:text-teal-400 transition">
+        <Instagram size={16} />
+      </a>
+      <a href="#" className="hover:text-teal-400 transition">
+        <Twitter size={16} />
+      </a>
+      <a href="#" className="hover:text-teal-400 transition">
+        <Linkedin size={16} />
+      </a>
+    </div>
+  </div>
+</div>
+
+{/* ================= MAIN NAVBAR ================= */}
+<nav className="fixed top-8 w-full bg-white/95 backdrop-blur z-50 border-b shadow-md">
+  <div className="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
+
+    {/* Logo */}
+    <a
+      href="#home"
+      className="flex items-center gap-2 font-extrabold text-xl text-gray-800"
+    >
+      <img src="/teams/logo.jpeg" alt="Logo" className="h-9 w-9" />
+      {company.shortName}
+    </a>
+
+    {/* Desktop Nav */}
+    <ul className="hidden md:flex gap-8 text-sm font-semibold">
+      {navLinks.map((link, i) => (
+        <li
+          key={i}
+          className="relative"
+          onMouseEnter={() => link.dropdown && setActiveDropdown(link.title)}
+          onMouseLeave={() => link.dropdown && setActiveDropdown(null)}
+        >
+          <a
+            href={link.href}
+            className="py-2 block cursor-pointer hover:text-teal-600 transition"
+          >
+            {link.title}
           </a>
 
-          <ul className="hidden md:flex gap-8 text-sm font-semibold">
-            {navLinks.map((link, i) => (
-              <li key={i} className="relative"
-                onMouseEnter={() => link.dropdown && setActiveDropdown(link.title)}
-                onMouseLeave={() => link.dropdown && setActiveDropdown(null)}
-              >
-                <a href={link.href} className="py-2 block cursor-pointer hover:text-gray-900">{link.title}</a>
-                {link.dropdown && activeDropdown === link.title && (
-                  <div className="absolute top-full left-0 mt-2 w-48 bg-white rounded-xl shadow-lg border border-gray-200 space-y-2 p-3">
-                    {link.dropdown.map((sub, j) => (
-                      <a key={j} href={sub.href} className="block text-gray-700 hover:text-gray-900 text-sm">{sub.name}</a>
-                    ))}
-                  </div>
-                )}
-              </li>
-            ))}
-          </ul>
+          {/* Dropdown */}
+          {link.dropdown && activeDropdown === link.title && (
+            <div className="absolute top-full left-0 mt-3 w-52 bg-white rounded-xl shadow-xl border border-gray-200 space-y-2 p-3">
+              {link.dropdown.map((sub, j) => (
+                <a
+                  key={j}
+                  href={sub.href}
+                  className="block px-2 py-1 rounded-md text-gray-700 hover:bg-teal-50 hover:text-teal-600 text-sm transition"
+                >
+                  {sub.name}
+                </a>
+              ))}
+            </div>
+          )}
+        </li>
+      ))}
+    </ul>
 
-          <button className="md:hidden text-gray-800" onClick={() => setMenuOpen(!menuOpen)}>
-            {menuOpen ? <X /> : <Menu />}
-          </button>
+    {/* Mobile Menu Button */}
+    <button
+      className="md:hidden text-gray-800"
+      onClick={() => setMenuOpen(!menuOpen)}
+    >
+      {menuOpen ? <X size={28} /> : <Menu size={28} />}
+    </button>
+  </div>
+
+  {/* ================= MOBILE MENU ================= */}
+  {menuOpen && (
+    <motion.div
+      initial={{ x: "100%" }}
+      animate={{ x: 0 }}
+      transition={{ type: "spring", stiffness: 120 }}
+      className="fixed top-0 right-0 h-full w-3/4 bg-white shadow-2xl z-40 p-6 pt-28 md:hidden"
+    >
+      <ul className="flex flex-col gap-6 text-lg font-semibold">
+        {navLinks.map((link, i) => (
+          <li key={i}>
+            <a
+              href={link.href}
+              onClick={() => setMenuOpen(false)}
+              className="block text-gray-800 hover:text-teal-600 transition"
+            >
+              {link.title}
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      {/* Mobile Contact */}
+      <div className="mt-10 border-t pt-6 space-y-4 text-sm text-gray-600">
+        <div className="flex items-center gap-2">
+          <Mail size={16} className="text-teal-500" />
+          <span>{company.email}</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <Phone size={16} className="text-teal-500" />
+          <span>{company.phone}</span>
         </div>
 
-        {/* Mobile Menu */}
-        {menuOpen && (
-          <motion.div
-            initial={{ x: '100%' }}
-            animate={{ x: 0 }}
-            className="fixed top-0 right-0 h-full w-3/4 bg-white shadow-2xl z-40 p-6 pt-24 md:hidden"
-          >
-            <ul className="flex flex-col gap-4 text-lg font-semibold">
-              {navLinks.map((link, i) => (
-                <li key={i}>
-                  <a href={link.href} onClick={() => setMenuOpen(false)} className="text-gray-800 hover:text-gray-900">{link.title}</a>
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-        )}
-      </nav>
+        <div className="flex gap-4 pt-4">
+          <Instagram size={20} className="text-gray-500 hover:text-teal-500" />
+          <Twitter size={20} className="text-gray-500 hover:text-teal-500" />
+          <Linkedin size={20} className="text-gray-500 hover:text-teal-500" />
+        </div>
+      </div>
+    </motion.div>
+  )}
+</nav>
 
-      {/* Hero */}
-      <section id="home" className="pt-28 min-h-[90vh] bg-gradient-to-r from-blue-900 via-slate-800 to-gray-900 text-white flex flex-col justify-center items-center text-center px-6 relative">
-        <div className="absolute inset-0 bg-black/60" />
-        <motion.div className="relative z-10 max-w-4xl" initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }}>
-          <h1 className="text-5xl font-extrabold mb-4">
-            <span className="text-teal-400">{company.motto}</span>
-          </h1>
-          <p className="text-xl text-teal-200 mb-8">{company.tagline}</p>
-          <a href="#contact" className="bg-teal-600 hover:bg-teal-500 text-white font-semibold py-3 px-8 rounded-full transition">Request a Consultation</a>
-        </motion.div>
-      </section>
+
+     {/* Hero */}
+<section
+  id="home"
+  className="pt-28 min-h-[90vh] flex flex-col justify-center items-center text-center px-6 relative overflow-hidden text-white"
+>
+  {/* Background Image */}
+  <img
+    src="/teams/Home.jfif"
+    alt="Structural Engineering Design"
+    className="absolute inset-0 w-full h-full object-cover"
+  />
+
+  {/* Dark Overlay */}
+  <div className="absolute inset-0 bg-gradient-to-r from-blue-900/80 via-slate-900/80 to-gray-900/80" />
+
+  {/* Content */}
+  <motion.div
+    className="relative z-10 max-w-4xl"
+    initial={{ opacity: 0, y: 50 }}
+    animate={{ opacity: 1, y: 0 }}
+  >
+    <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-4">
+      <span className="text-teal-400">{company.motto}</span>
+    </h1>
+
+    <p className="text-lg sm:text-xl text-teal-200 mb-8">
+      {company.tagline}
+    </p>
+
+    <a
+      href="#contact"
+      className="inline-block bg-teal-600 hover:bg-teal-500 text-white font-semibold py-3 px-8 rounded-full transition"
+    >
+      Request a Consultation
+    </a>
+  </motion.div>
+</section>
+
 
       {/* Stats */}
       <section className="py-16 bg-white border-b">
@@ -177,30 +346,66 @@ export default function Page() {
         </div>
       </section>
 
-      {/* Services */}
       <section id="services" className="py-24 bg-slate-900 text-white px-6">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-4 text-teal-400">What We Do</h2>
-          <p className="text-center text-slate-300 mb-12">Comprehensive services structurally sound, sustainably designed.</p>
+      <div className="max-w-7xl mx-auto">
 
-          <div className="max-w-md mx-auto mb-12 relative">
-            <Search className="absolute left-3 top-3 text-gray-400" />
-            <input
-              className="w-full pl-10 p-3 rounded-xl text-gray-900"
-              placeholder="Search a service..."
-              value={search}
-              onChange={e => setSearch(e.target.value)}
-            />
-          </div>
+        {/* Heading */}
+        <h2 className="text-4xl font-bold text-center mb-4 text-teal-400">
+          What We Do
+        </h2>
+        <p className="text-center text-slate-300 mb-12">
+          Comprehensive civil & structural engineering services
+        </p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {loading
-              ? Array.from({ length: 6 }).map((_, i) => <div key={i} className="animate-pulse bg-gray-200 h-36 rounded-2xl" />)
-              : filteredServices.map((s, i) => <ServiceCard key={i} service={s} />)
-            }
-          </div>
+        {/* Search */}
+        <div className="max-w-md mx-auto mb-12 relative">
+          <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-teal-400" />
+          <input
+            className="w-full pl-12 pr-4 py-3 rounded-xl
+              bg-white text-gray-900
+              placeholder-gray-500
+              border border-teal-500/40
+              focus:outline-none focus:ring-2 focus:ring-teal-500
+              shadow-md"
+            placeholder="Search our engineering services..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
         </div>
-      </section>
+
+        {/* Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {loading ? (
+            Array.from({ length: 6 }).map((_, i) => (
+              <div
+                key={i}
+                className="animate-pulse bg-gray-200 h-40 rounded-2xl"
+              />
+            ))
+          ) : filteredServices.length > 0 ? (
+            filteredServices.map((service, i) => (
+              <motion.div
+                key={i}
+                whileHover={{ y: -6 }}
+                className="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition"
+              >
+                <service.icon className="text-teal-600 mb-4" size={32} />
+                <h3 className="font-bold text-lg mb-2 text-gray-800">
+                  {service.title}
+                </h3>
+                <p className="text-sm text-gray-600">
+                  {service.desc}
+                </p>
+              </motion.div>
+            ))
+          ) : (
+            <p className="text-center col-span-full text-gray-400">
+              No services match your search.
+            </p>
+          )}
+        </div>
+      </div>
+    </section>
 
       {/* Projects */}
       <section id="projects" className="py-24 bg-gray-50 px-6">
@@ -220,19 +425,34 @@ export default function Page() {
         </div>
       </section>
 
-      {/* Team */}
-      <section id="team" className="py-24 max-w-6xl mx-auto px-6">
-        <h2 className="text-3xl font-bold text-center mb-12 text-teal-600">Our Core Team</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {teamData.map((t, i) => (
-            <motion.div key={i} whileHover={{ scale: 1.03 }} className="bg-white border-t-4 border-teal-500 shadow-lg rounded-xl p-8 text-center">
-              <div className="w-24 h-24 bg-gray-200 rounded-full mx-auto mb-4" />
-              <h4 className="text-xl font-bold text-gray-800">{t.name}</h4>
-              <p className="text-sm text-gray-600">{t.role}</p>
-            </motion.div>
-          ))}
+ {/* Team */}
+<section id="team" className="py-24 max-w-6xl mx-auto px-6">
+  <h2 className="text-3xl font-bold text-center mb-12 text-teal-600">
+    Our Core Team
+  </h2>
+
+  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    {teamData.map((t, i) => (
+      <motion.div
+        key={i}
+        whileHover={{ scale: 1.03 }}
+        className="bg-white border-t-4 border-teal-500 shadow-lg rounded-xl p-8 text-center"
+      >
+        <div className="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden border-4 border-teal-500 shadow-md">
+          <img
+            src={t.image}
+            alt={t.name}
+            className="w-full h-full object-cover"
+          />
         </div>
-      </section>
+
+        <h4 className="text-xl font-bold text-gray-800">{t.name}</h4>
+        <p className="text-sm text-gray-600">{t.role}</p>
+      </motion.div>
+    ))}
+  </div>
+</section>
+
 
       {/* Contact */}
       <section id="contact" className="py-24 max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12">
