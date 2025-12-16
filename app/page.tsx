@@ -16,9 +16,7 @@ import {
   CheckCircle,
   Phone,
   MapPin,
-  
   Zap,
-  
 } from "lucide-react";
 
 /* -------------------- DATA -------------------- */
@@ -91,26 +89,9 @@ const servicesData = [
     desc: "Professional civil & structural engineering advisory services.",
     icon: Zap
   }
-]
-function ServicesSection() {
-  const [search, setSearch] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [filteredServices, setFilteredServices] = useState(servicesData);
+];
 
-  useEffect(() => {
-    setLoading(true);
-    const timer = setTimeout(() => {
-      setFilteredServices(
-        servicesData.filter(service =>
-          service.title.toLowerCase().includes(search.toLowerCase()) ||
-          service.desc.toLowerCase().includes(search.toLowerCase())
-        )
-      );
-      setLoading(false);
-    }, 300);
-
-    return () => clearTimeout(timer);
-  }, [search]);}
+// --- CRITICAL FIX 1: The duplicated, unused 'ServicesSection' function has been removed. ---
 
 const projectsData = [
   {
@@ -121,9 +102,6 @@ const projectsData = [
       "/teams/Resd7.jpeg",
       "/teams/Resdental1.jpeg",
       "/teams/Resdi21.jpeg",
-    
-      
-     
     ],
   },
   {
@@ -131,8 +109,6 @@ const projectsData = [
     type: "Commercial",
     images: [
       "/teams/commercial.jpeg",
-    
-   
     ],
   },
   {
@@ -140,22 +116,18 @@ const projectsData = [
     type: "Industrial",
     images: [
         "/teams/Sanaprt2.jpeg",
-          "/teams/SanApart.jpeg",
+        "/teams/SanApart.jpeg",
     ],
   },
-  
-
 ];
-type AutoSliderProps = {
-  images: string[];    // array of image URLs
-  interval?: number;   // optional interval in ms
-};
 
-const AutoSlider = ({ images, interval = 5000 }: AutoSliderProps) => {
+const AutoSlider = ({ images, interval = 5000 }) => {
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
-    const timer = setInterval(() => setIndex((prev) => (prev + 1) % images.length), interval);
+    const timer = setInterval(() => {
+      setIndex((prev) => (prev + 1) % images.length);
+    }, interval);
     return () => clearInterval(timer);
   }, [images.length, interval]);
 
@@ -184,23 +156,47 @@ const teamData = [
     image: "/teams/lorian.jpg"
   },
   {
-     name: "LORRIAN ANDWATI",
+      name: "LORRIAN ANDWATI",
     role: "Founder / Principal Engineer",
     image: "/teams/evans.jpeg"
   },
   {
-   name: "LORRIAN ANDWATI",
+    name: "LORRIAN ANDWATI",
     role: "Founder / Principal Engineer",
     image: "/teams/lorian.jpg"
   }
 ];
 
+/* -------------------- HELPER COMPONENTS (MOVED UP FOR FIX 2) -------------------- */
+
+// CRITICAL FIX 2: These components are moved here to be defined before the Page component uses them.
+
+function ServiceCard({ service }) {
+  const Icon = service.icon;
+  return (
+    <motion.div whileHover={{ y: -6 }} className="bg-white p-6 rounded-2xl shadow-lg transition-transform hover:shadow-xl">
+      {Icon && <Icon className="text-teal-600 mb-4" size={28} />}
+      <h3 className="font-bold text-lg mb-2 text-gray-800">{service.title}</h3>
+      <p className="text-sm text-gray-600">{service.desc}</p>
+    </motion.div>
+  );
+}
+
+function Stat({ icon, label, value }) {
+  return (
+    <div className="text-center">
+      <div className="flex justify-center text-teal-600 mb-2">{icon}</div>
+      <h3 className="text-3xl font-bold text-gray-800">{value}</h3>
+      <p className="text-sm text-gray-600">{label}</p>
+    </div>
+  );
+}
 
 /* -------------------- PAGE -------------------- */
 export default function Page() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
-
+  const [activeDropdown, setActiveDropdown] = useState(null);
+  // State for search/filtering, correctly placed in the main client component
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(false);
   const [filteredServices, setFilteredServices] = useState(servicesData);
@@ -221,29 +217,29 @@ export default function Page() {
   }, [search]);
 
   const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: (delay = 0) => ({
-    opacity: 1,
-    y: 0,
-    transition: { delay, duration: 0.7, ease: "easeOut" },
-  }),
-};
+    hidden: { opacity: 0, y: 30 },
+    visible: (delay = 0) => ({
+      opacity: 1,
+      y: 0,
+      transition: { delay, duration: 0.7, ease: "easeOut" },
+    }),
+  };
 
-const staggerContainer = {
-  hidden: {},
-  visible: {
-    transition: { staggerChildren: 0.15 },
-  },
-};
+  const staggerContainer = {
+    hidden: {},
+    visible: {
+      transition: { staggerChildren: 0.15 },
+    },
+  };
 
-/* ================= DATA ================= */
-const coreValues = [
-  "Quality",
-  "Innovation",
-  "Safety",
-  "Integrity",
-  "Client Satisfaction",
-];
+  /* ================= DATA ================= */
+  const coreValues = [
+    "Quality",
+    "Innovation",
+    "Safety",
+    "Integrity",
+    "Client Satisfaction",
+  ];
 
 
   return (
@@ -382,7 +378,7 @@ const coreValues = [
 </nav>
 
 
-     {/* Hero */}
+      {/* Hero */}
 <section
   id="home"
   className="pt-28 min-h-[90vh] flex flex-col justify-center items-center text-center px-6 relative overflow-hidden text-white"
@@ -474,6 +470,7 @@ const coreValues = [
                 whileHover={{ y: -6 }}
                 className="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition"
               >
+                {/* Note: service.icon is a component (lucide-react icon), so we render it like this */}
                 <service.icon className="text-teal-600 mb-4" size={32} />
                 <h3 className="font-bold text-lg mb-2 text-gray-800">
                   {service.title}
@@ -492,7 +489,7 @@ const coreValues = [
       </div>
     </section>
 
-     <section id="projects" className="py-24 bg-gray-50 px-6">
+      <section id="projects" className="py-24 bg-gray-50 px-6">
   <h2 className="text-3xl font-bold text-center mb-12 text-teal-700">
     Our Work Portfolio
   </h2>
@@ -657,7 +654,7 @@ const coreValues = [
           </motion.div>
         </div>
       </section>
- {/* Team */}
+  {/* Team */}
 <section id="team" className="py-24 max-w-6xl mx-auto px-6">
   <h2 className="text-3xl font-bold text-center mb-12 text-teal-600">
     Our Core Team
@@ -767,28 +764,5 @@ const coreValues = [
         </div>
       </footer>
     </main>
-  );
-}
-
-/* -------------------- SERVICE CARD COMPONENT -------------------- */
-function ServiceCard({ service }) {
-  const Icon = service.icon;
-  return (
-    <motion.div whileHover={{ y: -6 }} className="bg-white p-6 rounded-2xl shadow-lg transition-transform hover:shadow-xl">
-      {Icon && <Icon className="text-teal-600 mb-4" size={28} />}
-      <h3 className="font-bold text-lg mb-2 text-gray-800">{service.title}</h3>
-      <p className="text-sm text-gray-600">{service.desc}</p>
-    </motion.div>
-  );
-}
-
-/* -------------------- STAT COMPONENT -------------------- */
-function Stat({ icon, label, value }) {
-  return (
-    <div className="text-center">
-      <div className="flex justify-center text-teal-600 mb-2">{icon}</div>
-      <h3 className="text-3xl font-bold text-gray-800">{value}</h3>
-      <p className="text-sm text-gray-600">{label}</p>
-    </div>
   );
 }
