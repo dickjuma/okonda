@@ -1,7 +1,7 @@
 "use client";
 import "./globals.css"
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   Mail,
   Instagram,
@@ -113,12 +113,66 @@ function ServicesSection() {
   }, [search]);}
 
 const projectsData = [
-  { name: "Residential High-Rise", type: "Housing" },
-  { name: "Commercial Office Complex", type: "Commercial" },
-  { name: "Industrial Facility Upgrade", type: "Industrial" },
-  { name: "Institutional Building Audit", type: "Education" },
-  { name: "Infrastructure Road Works", type: "Public Works" }
+  {
+    name: "Residential High-Rise",
+    type: "Housing",
+    images: [
+      "/teams/Resd5.jpeg",
+      "/teams/Resd7.jpeg",
+      "/teams/Resdental1.jpeg",
+      "/teams/Resdi21.jpeg",
+    
+      
+     
+    ],
+  },
+  {
+    name: "Commercial Office Complex",
+    type: "Commercial",
+    images: [
+      "/teams/commercial.jpeg",
+    
+   
+    ],
+  },
+  {
+    name: "Industrial Facility Upgrade",
+    type: "Industrial",
+    images: [
+        "/teams/Sanaprt2.jpeg",
+          "/teams/SanApart.jpeg",
+    ],
+  },
+  
+
 ];
+const AutoSlider = ({ images, interval = 5000 }) => {
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setIndex((prev) => (prev + 1) % images.length);
+    }, interval);
+    return () => clearInterval(timer);
+  }, [images.length, interval]);
+
+  return (
+    <div className="relative h-40 w-full overflow-hidden">
+      <AnimatePresence mode="wait">
+        <motion.img
+          key={index}
+          src={images[index]}
+          alt="Project"
+          className="absolute inset-0 w-full h-full object-cover"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.8 }}
+        />
+      </AnimatePresence>
+    </div>
+  );
+};
 
 const teamData = [
   {
@@ -129,7 +183,7 @@ const teamData = [
   {
      name: "LORRIAN ANDWATI",
     role: "Founder / Principal Engineer",
-    image: "/teams/lorian.jpg"
+    image: "/teams/evans.jpeg"
   },
   {
    name: "LORRIAN ANDWATI",
@@ -159,7 +213,34 @@ export default function Page() {
       setLoading(false);
     }, 300);
     return () => clearTimeout(timer);
+    
   }, [search]);
+
+  const fadeUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: (delay = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay, duration: 0.7, ease: "easeOut" },
+  }),
+};
+
+const staggerContainer = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.15 },
+  },
+};
+
+/* ================= DATA ================= */
+const coreValues = [
+  "Quality",
+  "Innovation",
+  "Safety",
+  "Integrity",
+  "Client Satisfaction",
+];
+
 
   return (
     <main className="scroll-smooth font-sans bg-gray-50 text-gray-800">
@@ -407,24 +488,171 @@ export default function Page() {
       </div>
     </section>
 
-      {/* Projects */}
-      <section id="projects" className="py-24 bg-gray-50 px-6">
-        <h2 className="text-3xl font-bold text-center mb-12 text-teal-700">Our Work Portfolio</h2>
-        <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {projectsData.map((p, i) => (
-            <motion.div key={i} whileHover={{ scale: 1.03 }} className="bg-white rounded-xl border-t-8 border-teal-600 overflow-hidden shadow-md">
-              <div className="h-40 bg-gray-200 flex items-center justify-center text-gray-500">
-                Project Image Placeholder
-              </div>
-              <div className="p-4">
-                <h3 className="font-bold text-lg text-gray-800">{p.name}</h3>
-                <span className="text-xs text-gray-500">{p.type}</span>
-              </div>
-            </motion.div>
-          ))}
+     <section id="projects" className="py-24 bg-gray-50 px-6">
+  <h2 className="text-3xl font-bold text-center mb-12 text-teal-700">
+    Our Work Portfolio
+  </h2>
+
+  <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+    {projectsData.map((p, i) => (
+      <motion.div
+        key={i}
+        whileHover={{ scale: 1.03 }}
+        className="bg-white rounded-xl border-t-8 border-teal-600 overflow-hidden shadow-md"
+      >
+        <AutoSlider images={p.images} interval={5000} />
+
+        <div className="p-4">
+          <h3 className="font-bold text-lg text-gray-800">{p.name}</h3>
+          <span className="text-xs text-gray-500">{p.type}</span>
+        </div>
+      </motion.div>
+    ))}
+  </div>
+</section>
+  {/* ================= ABOUT US ================= */}
+      <section id="about" className="relative py-28 bg-white px-6 overflow-hidden">
+        
+        {/* Background Accent */}
+        <div className="absolute -top-24 -right-24 w-96 h-96 bg-teal-100 rounded-full blur-3xl opacity-40" />
+
+        {/* Section Header */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={staggerContainer}
+          className="max-w-4xl mx-auto text-center mb-20 relative z-10"
+        >
+          <motion.span
+            variants={fadeUp}
+            className="text-sm uppercase tracking-widest text-teal-600 font-semibold"
+          >
+            Who We Are
+          </motion.span>
+
+          <motion.h2
+            variants={fadeUp}
+            className="text-4xl font-extrabold text-gray-900 mt-4"
+          >
+            BiLOR Civil & Structural Engineering Design Ltd
+          </motion.h2>
+
+          <motion.p
+            variants={fadeUp}
+            className="mt-6 text-gray-600 leading-relaxed"
+          >
+            We are a professional civil and structural engineering firm delivering
+            end-to-end engineering solutions — from concept design to execution —
+            across residential, commercial, and industrial developments.
+          </motion.p>
+        </motion.div>
+
+        {/* Content Grid */}
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8 relative z-10">
+
+          {/* Company Overview */}
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="lg:col-span-2 bg-gray-50 rounded-2xl p-8 shadow-md border-l-4 border-teal-600"
+          >
+            <h3 className="text-2xl font-bold text-gray-800 mb-4">
+              Company Overview
+            </h3>
+            <p className="text-gray-600 leading-relaxed">
+              BiLOR Civil and Structural Engineers provide comprehensive structural
+              engineering services including analysis, design, detailing, and
+              project management. Our work is grounded in technical excellence,
+              regulatory compliance, and sustainable engineering principles.
+            </p>
+          </motion.div>
+
+          {/* Identity Card */}
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="bg-white rounded-2xl p-8 shadow-lg border-t-4 border-teal-600 flex flex-col justify-center"
+          >
+            <p className="text-teal-700 font-semibold text-lg italic mb-2">
+              “Structurally sound, sustainably designed.”
+            </p>
+            <span className="text-sm text-gray-500">
+              Company Tagline
+            </span>
+          </motion.div>
+
+          {/* Mission */}
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="bg-gray-50 rounded-2xl p-8 shadow-md"
+          >
+            <h3 className="text-xl font-bold text-gray-800 mb-3">Our Mission</h3>
+            <p className="text-gray-600 text-sm leading-relaxed">
+              To deliver innovative, safe, and sustainable structural engineering
+              solutions that exceed client expectations while upholding quality,
+              integrity, and collaborative teamwork.
+            </p>
+          </motion.div>
+
+          {/* Vision */}
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="bg-gray-50 rounded-2xl p-8 shadow-md"
+          >
+            <h3 className="text-xl font-bold text-gray-800 mb-3">Our Vision</h3>
+            <p className="text-gray-600 text-sm leading-relaxed">
+              To be a leading and well-recognized structural engineering firm in
+              Kenya, distinguished by excellence, creativity, and long-term
+              contribution to the built environment.
+            </p>
+          </motion.div>
+
+          {/* Core Values */}
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="bg-gray-50 rounded-2xl p-8 shadow-md"
+          >
+            <h3 className="text-xl font-bold text-gray-800 mb-4">Core Values</h3>
+            <div className="flex flex-wrap gap-3">
+              {coreValues.map((value, i) => (
+                <span
+                  key={i}
+                  className="px-4 py-2 text-sm rounded-full bg-teal-100 text-teal-700 font-medium"
+                >
+                  {value}
+                </span>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Motto */}
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="lg:col-span-3 bg-teal-700 rounded-2xl p-10 text-center shadow-xl"
+          >
+            <p className="text-2xl font-semibold text-white">
+              “Building trust, Designing the future.”
+            </p>
+          </motion.div>
         </div>
       </section>
-
  {/* Team */}
 <section id="team" className="py-24 max-w-6xl mx-auto px-6">
   <h2 className="text-3xl font-bold text-center mb-12 text-teal-600">
