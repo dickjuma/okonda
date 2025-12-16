@@ -121,7 +121,12 @@ const projectsData = [
   },
 ];
 
-const AutoSlider = ({ images, interval = 5000 }) => {
+type AutoSliderProps = {
+  images: string[];
+  interval?: number;
+};
+
+const AutoSlider = ({ images, interval = 5000 }: AutoSliderProps) => {
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
@@ -148,6 +153,7 @@ const AutoSlider = ({ images, interval = 5000 }) => {
     </div>
   );
 };
+
 
 const teamData = [
   {
