@@ -199,7 +199,8 @@ const teamData = [
 /* -------------------- PAGE -------------------- */
 export default function Page() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState(null);
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(false);
   const [filteredServices, setFilteredServices] = useState(servicesData);
