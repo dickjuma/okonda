@@ -146,13 +146,16 @@ const projectsData = [
   
 
 ];
-const AutoSlider = ({ images, interval = 5000 }) => {
+type AutoSliderProps = {
+  images: string[];    // array of image URLs
+  interval?: number;   // optional interval in ms
+};
+
+const AutoSlider = ({ images, interval = 5000 }: AutoSliderProps) => {
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setIndex((prev) => (prev + 1) % images.length);
-    }, interval);
+    const timer = setInterval(() => setIndex((prev) => (prev + 1) % images.length), interval);
     return () => clearInterval(timer);
   }, [images.length, interval]);
 
