@@ -1,6 +1,5 @@
 "use client";
-
-import "./globals.css";
+import "./globals.css"
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -20,42 +19,6 @@ import {
   Zap,
 } from "lucide-react";
 
-/* -------------------- TYPES -------------------- */
-type Service = {
-  title: string;
-  desc: string;
-  icon: React.ComponentType<{ size?: number; className?: string }>;
-};
-
-type StatProps = {
-  icon: React.ReactNode;
-  label: string;
-  value: string | number;
-};
-
-type AutoSliderProps = {
-  images: string[];
-  interval?: number;
-};
-
-type TeamMember = {
-  name: string;
-  role: string;
-  image: string;
-};
-
-type Project = {
-  name: string;
-  type: string;
-  images: string[];
-};
-
-type NavLink = {
-  title: string;
-  href?: string;
-  dropdown?: { name: string; href: string }[];
-};
-
 /* -------------------- DATA -------------------- */
 const company = {
   name: "BiLOR CIVIL & STRUCTURAL ENGINEERING DESIGN LTD.",
@@ -65,10 +28,10 @@ const company = {
   whatsapp: "0799 236 234",
   tagline: "Structurally sound, sustainably designed.",
   motto: "Building trust, Designing future.",
-  location: "Hill Side Estate, Kapsoya Eldoret, Uasin Gishu County, Kenya",
+  location: "Hill Side Estate, Kapsoya Eldoret, Uasin Gishu County, Kenya"
 };
 
-const navLinks: NavLink[] = [
+const navLinks = [
   { title: "Home", href: "#home" },
   {
     title: "About Us",
@@ -76,8 +39,8 @@ const navLinks: NavLink[] = [
       { name: "Our Profile", href: "#profile" },
       { name: "Mission & Vision", href: "#mission" },
       { name: "Core Values", href: "#values" },
-      { name: "The Team", href: "#team" },
-    ],
+      { name: "The Team", href: "#team" }
+    ]
   },
   {
     title: "What We Do",
@@ -87,48 +50,50 @@ const navLinks: NavLink[] = [
       { name: "Project Management", href: "#pm" },
       { name: "Feasibility Studies", href: "#feasibility" },
       { name: "Site Supervision", href: "#site" },
-      { name: "Consultancy", href: "#consultancy" },
-    ],
+      { name: "Consultancy", href: "#consultancy" }
+    ]
   },
   { title: "Our Work", href: "#projects" },
   { title: "Blog", href: "#blog" },
-  { title: "Contact Us", href: "#contact" },
+  { title: "Contact Us", href: "#contact" }
 ];
 
-const servicesData: Service[] = [
+const servicesData = [
   {
     title: "Structural Design and Analysis",
     desc: "Safe, efficient, and sustainable structural solutions for buildings and infrastructure.",
-    icon: Building2,
+    icon: Building2
   },
   {
     title: "Project Management and Coordination",
     desc: "End-to-end planning, scheduling, coordination, and risk control.",
-    icon: Briefcase,
+    icon: Briefcase
   },
   {
     title: "Feasibility Studies and Due Diligence",
     desc: "Technical, financial, and regulatory feasibility evaluation.",
-    icon: Search,
+    icon: Search
   },
   {
     title: "Expert Witness Services",
     desc: "Independent engineering reports and litigation support.",
-    icon: Users,
+    icon: Users
   },
   {
     title: "Site Supervision and Engineering",
     desc: "On-site quality control, compliance, and safety supervision.",
-    icon: CheckCircle,
+    icon: CheckCircle
   },
   {
     title: "Consultancy",
     desc: "Professional civil & structural engineering advisory services.",
-    icon: Zap,
-  },
+    icon: Zap
+  }
 ];
 
-const projectsData: Project[] = [
+// --- CRITICAL FIX 1: The duplicated, unused 'ServicesSection' function has been removed. ---
+
+const projectsData = [
   {
     name: "Residential High-Rise",
     type: "Housing",
@@ -142,34 +107,25 @@ const projectsData: Project[] = [
   {
     name: "Commercial Office Complex",
     type: "Commercial",
-    images: ["/teams/commercial.jpeg"],
+    images: [
+      "/teams/commercial.jpeg",
+    ],
   },
   {
     name: "Industrial Facility Upgrade",
     type: "Industrial",
-    images: ["/teams/Sanaprt2.jpeg", "/teams/SanApart.jpeg"],
+    images: [
+        "/teams/Sanaprt2.jpeg",
+        "/teams/SanApart.jpeg",
+    ],
   },
 ];
 
-const teamData: TeamMember[] = [
-  {
-    name: "LORRIAN ANDWATI",
-    role: "Founder / Principal Engineer",
-    image: "/teams/lorian.jpg",
-  },
-  {
-    name: "EVANS",
-    role: "Project Engineer",
-    image: "/teams/evans.jpeg",
-  },
-  {
-    name: "ANOTHER MEMBER",
-    role: "Structural Engineer",
-    image: "/teams/lorian.jpg",
-  },
-];
+type AutoSliderProps = {
+  images: string[];
+  interval?: number;
+};
 
-/* -------------------- COMPONENTS -------------------- */
 const AutoSlider = ({ images, interval = 5000 }: AutoSliderProps) => {
   const [index, setIndex] = useState(0);
 
@@ -198,13 +154,33 @@ const AutoSlider = ({ images, interval = 5000 }: AutoSliderProps) => {
   );
 };
 
-function ServiceCard({ service }: { service: Service }) {
+
+const teamData = [
+  {
+    name: "LORRIAN ANDWATI",
+    role: "Founder / Principal Engineer",
+    image: "/teams/lorian.jpg"
+  },
+  {
+      name: "LORRIAN ANDWATI",
+    role: "Founder / Principal Engineer",
+    image: "/teams/evans.jpeg"
+  },
+  {
+    name: "LORRIAN ANDWATI",
+    role: "Founder / Principal Engineer",
+    image: "/teams/lorian.jpg"
+  }
+];
+
+/* -------------------- HELPER COMPONENTS (MOVED UP FOR FIX 2) -------------------- */
+
+// CRITICAL FIX 2: These components are moved here to be defined before the Page component uses them.
+
+function ServiceCard({ service }) {
   const Icon = service.icon;
   return (
-    <motion.div
-      whileHover={{ y: -6 }}
-      className="bg-white p-6 rounded-2xl shadow-lg transition-transform hover:shadow-xl"
-    >
+    <motion.div whileHover={{ y: -6 }} className="bg-white p-6 rounded-2xl shadow-lg transition-transform hover:shadow-xl">
       {Icon && <Icon className="text-teal-600 mb-4" size={28} />}
       <h3 className="font-bold text-lg mb-2 text-gray-800">{service.title}</h3>
       <p className="text-sm text-gray-600">{service.desc}</p>
@@ -212,7 +188,7 @@ function ServiceCard({ service }: { service: Service }) {
   );
 }
 
-function Stat({ icon, label, value }: StatProps) {
+function Stat({ icon, label, value }) {
   return (
     <div className="text-center">
       <div className="flex justify-center text-teal-600 mb-2">{icon}</div>
@@ -224,25 +200,26 @@ function Stat({ icon, label, value }: StatProps) {
 
 /* -------------------- PAGE -------------------- */
 export default function Page() {
-  const [menuOpen, setMenuOpen] = useState<boolean>(false);
-  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
-  const [search, setSearch] = useState<string>("");
-  const [loading, setLoading] = useState<boolean>(false);
-  const [filteredServices, setFilteredServices] = useState<Service[]>(servicesData);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState(null);
+  // State for search/filtering, correctly placed in the main client component
+  const [search, setSearch] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [filteredServices, setFilteredServices] = useState(servicesData);
 
   useEffect(() => {
     setLoading(true);
     const timer = setTimeout(() => {
       setFilteredServices(
-        servicesData.filter(
-          (s) =>
-            s.title.toLowerCase().includes(search.toLowerCase()) ||
-            s.desc.toLowerCase().includes(search.toLowerCase())
+        servicesData.filter(s =>
+          s.title.toLowerCase().includes(search.toLowerCase()) ||
+          s.desc.toLowerCase().includes(search.toLowerCase())
         )
       );
       setLoading(false);
     }, 300);
     return () => clearTimeout(timer);
+    
   }, [search]);
 
   const fadeUp = {
@@ -261,9 +238,14 @@ export default function Page() {
     },
   };
 
-  const coreValues: string[] = ["Quality", "Innovation", "Safety", "Integrity", "Client Satisfaction"];
-
-  /* ================== RENDER PAGE ================== */
+  /* ================= DATA ================= */
+  const coreValues = [
+    "Quality",
+    "Innovation",
+    "Safety",
+    "Integrity",
+    "Client Satisfaction",
+  ];
 
 
   return (
