@@ -114,7 +114,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${inter.className} antialiased bg-white text-gray-800 overflow-x-hidden`}>
+      <body className={`${inter.className} antialiased bg-white text-gray-800 overflow-x-hidden`} suppressHydrationWarning>
         {/* Smooth scroll progress indicator */}
         <div className="fixed top-0 left-0 w-full h-1 z-50 bg-transparent">
           <div className="h-full bg-orange-500 transition-all duration-300 ease-out" 

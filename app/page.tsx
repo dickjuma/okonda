@@ -44,210 +44,187 @@ import {
   GraduationCap,
   PhoneIcon,
   LinkedinIcon,
-  Trophy
+  Trophy,
+  Plus
 } from "lucide-react";
 
 // ==================== ENTERPRISE CONSTANTS ====================
 const COMPANY = {
-  name: "BI-LOR CONSTRUCTION & ENGINEERING LTD.",
-  shortName: "BI-LOR CONSTRUCTION",
-  email: "contact@bilorconstruction.com",
-  phone: "+254 799 236 234",
-  whatsapp: "+254 799 236 234",
-  tagline: "Building Africa's Future, One Project at a Time",
-  motto: "Strong Foundations. Lasting Structures.",
-  location: "Hill Side Estate, Kapsoya Eldoret, Uasin Gishu County, Kenya",
+  name: "BiLOR CIVIL & STRUCTURAL ENGINEERING DESIGN LTD.",
+  shortName: "BiLOR ENGINEERING",
+  overview: "BiLOR civil and structural engineers provide comprehensive structural engineering services from design to project management, for residential, commercial, and industrial projects.",
+  mission: "Delivering innovative, safe, and sustainable structural engineering solutions that meets the client's expectations while prioritizing quality, integrity, and team work.",
+  vision: "To be a well-recognized structural engineering firm in Kenya, renowned for excellence, creativity, and commitment to shaping the built environment.",
+  coreValues: ["Quality", "Innovation", "Safety", "Integrity", "Client Satisfaction"],
+  email: "lorianandwati@gmail.com",
+  phone: "0799236234",
+  whatsapp: "0799236234",
+  tagline: "Structurally sound, sustainably designed.",
+  motto: "Building trust, Designing future.",
+  location: "Hill Side Estate, Opposite Kenya Creameries Company, Kapsoya Eldoret, Uasin Gishu County, Kenya",
   founded: "2013",
-  certifications: ["NCA Level 8", "ERB Registered", "ISO 9001:2015", "OSHA Certified"]
+  certifications: ["Structural Design", "Project Management", "Engineering Consultancy"]
 };
 
 const NAV_LINKS = [
   { title: "Home", href: "#home" },
   {
     title: "About Us",
+    href: "#about",
     dropdown: [
       { name: "Our Story", href: "#about" },
-      { name: "Our Team", href: "#team" },
-      { name: "Mission & Values", href: "#values" },
-      { name: "Certifications", href: "#certifications" }
+      { name: "Our Team", href: "#team" }
     ]
   },
   {
     title: "Services",
     href: "#services",
     dropdown: [
-      { name: "Building Construction", href: "#building" },
-      { name: "Civil & Structural", href: "#civil" },
-      { name: "Road & Infrastructure", href: "#infrastructure" },
-      { name: "Renovations", href: "#renovations" },
-      { name: "Design & Build", href: "#design-build" },
-      { name: "Project Management", href: "#project-management" }
+      { name: "View All Services", href: "#services" }
     ]
   },
   { title: "Projects", href: "#projects" },
   { title: "Why Choose Us", href: "#why-us" },
-  { title: "Safety & Compliance", href: "#safety" },
+  { title: "Safety", href: "#safety" },
   { title: "Contact", href: "#contact" }
 ];
 
 const SERVICES = [
   {
-    title: "Building Construction",
-    description: "Residential, commercial, and mixed-use developments built to international standards.",
+    title: "Structural Design & Analysis",
+    description: "Comprehensive structural design and analysis for residential, commercial, and industrial projects.",
     icon: Building2,
-    features: ["Design-Build", "Quality Materials", "Timely Delivery", "Post-Construction Support"]
+    features: ["CAD Design", "FEA Analysis", "Code Compliance", "Safety Certification"]
   },
   {
-    title: "Civil & Structural Works",
-    description: "Strong, reliable infrastructure including foundations, drainage, and structural frameworks.",
-    icon: HardHat,
-    features: ["Foundation Engineering", "Structural Analysis", "Concrete Solutions", "Steel Framing"]
-  },
-  {
-    title: "Road & Infrastructure",
-    description: "Roadworks, paving, and public infrastructure development across urban and rural areas.",
-    icon: Truck,
-    features: ["Road Construction", "Drainage Systems", "Site Development", "Utilities Installation"]
-  },
-  {
-    title: "Renovations & Remodeling",
-    description: "Modern upgrades, extensions, and refurbishments for homes and businesses.",
-    icon: Hammer,
-    features: ["Structural Upgrades", "Modernization", "Space Optimization", "Energy Efficiency"]
-  },
-  {
-    title: "Design & Build",
-    description: "End-to-end solutions from concept design to project completion.",
-    icon: Wrench,
-    features: ["Architectural Design", "Engineering", "Construction", "Interior Finishing"]
-  },
-  {
-    title: "Project Management",
-    description: "Professional planning, budgeting, and supervision to ensure on-time delivery.",
+    title: "Project Management & Coordination",
+    description: "Professional project oversight and coordination from concept through completion.",
     icon: Briefcase,
-    features: ["Planning & Scheduling", "Budget Management", "Quality Control", "Risk Management"]
+    features: ["Timeline Management", "Budget Control", "Quality Assurance", "Stakeholder Coordination"]
+  },
+  {
+    title: "Feasibility Studies & Due Diligence",
+    description: "Detailed feasibility assessments and technical due diligence for informed decisions.",
+    icon: TrendingUp,
+    features: ["Site Assessment", "Technical Review", "Risk Analysis", "Recommendations"]
+  },
+  {
+    title: "Expert Witness Services",
+    description: "Professional expert witness testimony for legal and dispute resolution matters.",
+    icon: Award,
+    features: ["Technical Analysis", "Legal Testimony", "Documentation", "Report Writing"]
+  },
+  {
+    title: "Site Supervision & Engineering",
+    description: "On-site professional supervision ensuring construction meets specifications and standards.",
+    icon: HardHat,
+    features: ["Daily Inspection", "Quality Control", "Safety Monitoring", "Progress Reports"]
+  },
+  {
+    title: "Engineering Consultancy",
+    description: "Expert consulting services for structural engineering challenges and solutions.",
+    icon: Globe,
+    features: ["Technical Guidance", "Problem Solving", "Optimization", "Innovation"]
   }
 ];
 
 const PROJECTS = [
   {
-    name: "Eldoret Commercial Plaza",
+    name: "Commercial Plaza",
     location: "Eldoret, Kenya",
     scope: "15-Story Office & Retail Complex",
     type: "Commercial",
-    image:"/teams/Resdental1.jpeg",
+    image:"/teams/Commercial.jpeg",
     completed: "2024",
     size: "25,000 sqm"
   },
   {
-    name: "Kapsoya Residential Estate",
+    name: "Commercial Plaza",
     location: "Eldoret, Kenya",
-    scope: "50 Luxury Housing Units",
-    type: "Residential",
-    image: "/projects/residential-estate.jpg",
-    completed: "2023",
-    size: "8 Acres"
+    scope: "26-Story Office & Retail Complex",
+    type: "Commercial",
+    image: "/teams/SanApart.jpeg",
+    completed: "2025",
+    size: "250000 sqm"
   },
   {
-    name: "Nairobi Industrial Park",
+    name: "San Apartments",
     location: "Nairobi, Kenya",
-    scope: "Industrial Warehouse Complex",
-    type: "Industrial",
-    image: "/projects/industrial-park.jpg",
-    completed: "2023",
+    scope: "Residential apartments",
+    type: "Residential",
+    image: "/teams/Sanaprt2.jpeg",
+    completed: "2025",
     size: "10,000 sqm"
   },
   {
-    name: "Western Kenya Highway",
-    location: "Western Kenya",
-    scope: "50km Road Construction & Upgrade",
-    type: "Infrastructure",
-    image: "/teams/Resd7.jpeg",
-    completed: "2022",
-    size: "50km"
-  },
-  {
-    name: "Kisumu Medical Center",
-    location: "Kisumu, Kenya",
-    scope: "Modern Healthcare Facility",
-    type: "Institutional",
+     name: "Personal Residence",
+    location: "Eldoret, Kenya",
+    scope: "1 Unit Resdential ",
+    type: "Resdential",
     image: "/teams/Resdi21.jpeg",
-    completed: "2021",
+    completed: "2024",
     size: "5,000 sqm"
   },
   {
-    name: "Mombasa Port Expansion",
-    location: "Mombasa, Kenya",
-    scope: "Port Infrastructure Development",
-    type: "Infrastructure",
-    image: 
-      "/teams/Resd5.jpeg",
-      
-      completed: "2020",
-    size: "15,000 sqm"
+    name: "Personal Residence",
+    location: "Eldoret, Kenya",
+    scope: "1 Unit Resdential ",
+    type: "Resdential",
+    image: "/teams/Resdi21.jpeg",
+    completed: "2025",
+    size: "5,000 sqm"
+  },
+  {
+    name: " 2 Personal Residence",
+    location: "Eldoret, Kenya",
+    scope: "2 Unit Resdential ",
+    type: "Resdential",
+    image: "/teams/Resdi21.jpeg",
+    completed: "2025",
+    size: "5,000 sqm"
   }
 ];
 
 const TEAM_MEMBERS = [
   {
-    name: "Dr. Benjamin Kipkorir",
-    position: "Founder & CEO",
-    qualifications: "PhD Civil Engineering, MBA",
-    experience: "25+ years",
+    name: "Kemboi Kosgei Esau ",
+    position: "Engineer",
+    qualifications: "Structural Engineer",
+    experience: "2+ years",
     expertise: ["Strategic Planning", "Project Finance", "International Standards"],
-    image: "/team/ceo.jpg",
+    image: "/teams/member2.jpg",
     linkedin: "#",
-    email: "benjamin@bilorconstruction.com"
+    email: "."
   },
   {
-    name: "Eng. Lorraine Chebet",
-    position: "Chief Operations Officer",
-    qualifications: "MSc Structural Engineering, PMP",
-    experience: "18+ years",
-    expertise: ["Operations Management", "Quality Control", "Supply Chain"],
-    image: "/team/coo.jpg",
+    name: "Eng. Lorraine Okonda ",
+    position: "CEO & Founder",
+    qualifications: "Civil  Engineering, PMP",
+    experience: "2+ years",
+    expertise: ["Operations Management", "Quality Control", "Archtectual design"],
+    image: "/teams/lorian.jpg",
     linkedin: "#",
-    email: "lorraine@bilorconstruction.com"
+    email: ".."
   },
   {
-    name: "Eng. Samuel Otieno",
-    position: "Head of Projects",
+    name: "Evans Kiprotich Kibet ",
+    position: "Civil Engineer ",
     qualifications: "BSc Civil Engineering, NCA Level 8",
-    experience: "15+ years",
+    experience: "4+ years",
     expertise: ["Project Management", "Site Supervision", "Budget Control"],
-    image: "/team/project-head.jpg",
+    image: "/teams/evans.jpeg",
     linkedin: "#",
-    email: "samuel@bilorconstruction.com"
+    email: ""
   },
   {
-    name: "Arch. Jane Wambui",
-    position: "Lead Architect",
+    name: "Praisefaith Sikuku ",
+    position: "Constructional Manager ",
     qualifications: "MArch, RIBA Certified",
     experience: "12+ years",
     expertise: ["Architectural Design", "Sustainable Building", "3D Modeling"],
-    image: "/team/architect.jpg",
+    image: "/teams/member3.jpg",
     linkedin: "#",
     email: "jane@bilorconstruction.com"
-  },
-  {
-    name: "Eng. David Mwangi",
-    position: "Safety Director",
-    qualifications: "MSc Occupational Safety, OSHA Trainer",
-    experience: "10+ years",
-    expertise: ["Safety Compliance", "Risk Assessment", "Emergency Response"],
-    image: "/team/safety-director.jpg",
-    linkedin: "#",
-    email: "david@bilorconstruction.com"
-  },
-  {
-    name: "Ms. Grace Akinyi",
-    position: "Finance Director",
-    qualifications: "CPA(K), MBA Finance",
-    experience: "14+ years",
-    expertise: ["Financial Planning", "Cost Control", "Investment Analysis"],
-    image: "/team/finance-director.jpg",
-    linkedin: "#",
-    email: "grace@bilorconstruction.com"
   }
 ];
 
@@ -296,7 +273,7 @@ const ServiceCard = ({ service }: { service: typeof SERVICES[0] }) => {
   return (
     <motion.div
       whileHover={{ y: -8 }}
-      className="group bg-white border border-gray-200 rounded-xl p-8 shadow-sm hover:shadow-xl transition-all duration-300"
+      className="group bg-white border border-gray-200 rounded-xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 h-full flex flex-col"
     >
       <div className="flex items-center justify-between mb-6">
         <div className="p-3 bg-black rounded-lg group-hover:bg-orange-500 transition-colors duration-300">
@@ -307,7 +284,7 @@ const ServiceCard = ({ service }: { service: typeof SERVICES[0] }) => {
       <h3 className="text-xl font-bold text-black mb-4 group-hover:text-orange-500 transition-colors duration-300">
         {service.title}
       </h3>
-      <p className="text-gray-600 mb-6">{service.description}</p>
+      <p className="text-gray-600 mb-6 flex-grow">{service.description}</p>
       <ul className="space-y-2">
         {service.features.map((feature, index) => (
           <li key={index} className="flex items-center text-sm text-gray-700">
@@ -323,32 +300,40 @@ const ServiceCard = ({ service }: { service: typeof SERVICES[0] }) => {
 const ProjectCard = ({ project }: { project: typeof PROJECTS[0] }) => (
   <motion.div
     whileHover={{ scale: 1.02 }}
-    className="group bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300"
+    className="group bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 h-full flex flex-col"
   >
-    <div className="h-48 bg-gray-300 relative overflow-hidden">
+    <div className="h-64 md:h-72 bg-gray-300 relative overflow-hidden flex-shrink-0">
+      <img 
+        src={project.image} 
+        alt={project.name}
+        className="absolute inset-0 w-full h-full object-cover object-center"
+      />
       <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-      <div className="absolute top-4 left-4">
-        <span className="bg-orange-500 text-white px-3 py-1 rounded-full text-xs font-semibold">
+      <div className="absolute top-3 md:top-4 left-3 md:left-4">
+        <span className="bg-orange-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
           {project.type}
         </span>
       </div>
-      <div className="absolute bottom-4 left-4 right-4">
-        <h3 className="text-white font-bold text-lg">{project.name}</h3>
-        <p className="text-white/90 text-sm">{project.location}</p>
+      <div className="absolute bottom-3 md:bottom-4 left-3 md:left-4 right-3 md:right-4">
+        <h3 className="text-white font-bold text-base md:text-lg">{project.name}</h3>
+        <p className="text-white/90 text-xs md:text-sm">{project.location}</p>
       </div>
     </div>
-    <div className="p-6">
-      <div className="flex justify-between items-start mb-4">
-        <div>
-          <p className="text-gray-700 font-medium">{project.scope}</p>
-          <p className="text-gray-500 text-sm mt-1">{project.size}</p>
+    <div className="p-4 md:p-6 flex-grow flex flex-col">
+      <div className="flex justify-between items-start mb-4 gap-2">
+        <div className="min-w-0">
+          <p className="text-gray-700 font-medium text-sm md:text-base">{project.scope}</p>
+          <p className="text-gray-500 text-xs md:text-sm mt-1">{project.size}</p>
         </div>
-        <span className="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">{project.completed}</span>
+        <span className="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded flex-shrink-0">{project.completed}</span>
       </div>
-      <button className="text-orange-500 text-sm font-semibold flex items-center hover:text-orange-600 group">
+      <motion.button 
+        whileHover={{ x: 4 }}
+        className="text-orange-600 text-xs md:text-sm font-semibold flex items-center hover:text-orange-700 group transition-colors mt-auto"
+      >
         View Project Details 
-        <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={16} />
-      </button>
+        <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={14} />
+      </motion.button>
     </div>
   </motion.div>
 );
@@ -369,8 +354,14 @@ const TeamMemberCard = ({ member, index }: { member: typeof TEAM_MEMBERS[0]; ind
     >
       {/* Team Member Image */}
       <div className="relative h-72 overflow-hidden">
+        <img 
+          src={member.image} 
+          alt={member.name}
+          className={`absolute inset-0 w-full h-full object-cover ${
+            member.image.includes('lorian') ? 'object-center' : 'object-top'
+          }`}
+        />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent z-10" />
-        <div className="absolute inset-0 bg-stone-300" />
         <div className="absolute bottom-0 left-0 right-0 z-20 p-6">
           <motion.div
             initial={false}
@@ -462,6 +453,9 @@ export default function EnterpriseConstructionPage() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [activeSection, setActiveSection] = useState("home");
+  const [expandedFAQ, setExpandedFAQ] = useState<number | null>(0);
+  const [showCookieBanner, setShowCookieBanner] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -470,6 +464,12 @@ export default function EnterpriseConstructionPage() {
     projectType: "",
     message: ""
   });
+
+  useEffect(() => {
+    // Simulate page load time (remove in production)
+    const timer = setTimeout(() => setIsLoading(false), 1200);
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -519,205 +519,441 @@ export default function EnterpriseConstructionPage() {
     visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
   };
 
-  return (
+  // ==================== SKELETON LOADER COMPONENT ====================
+  const SkeletonLoader = () => (
     <main className="scroll-smooth bg-white text-gray-800 font-sans overflow-x-hidden">
-      {/* ==================== ENTERPRISE NAVBAR ==================== */}
-      <nav className={`fixed w-full z-50 transition-all duration-300 ${
-        isScrolled ? "bg-black shadow-2xl" : "bg-black/95 backdrop-blur-sm"
-      }`}>
-        {/* Top Info Bar */}
-        <div className="hidden lg:block bg-stone-800 text-white text-sm">
-          <div className="max-w-7xl mx-auto px-6 py-2 flex justify-between items-center">
-            <div className="flex items-center gap-6">
-              <div className="flex items-center gap-2">
-                <Phone size={14} className="text-orange-500" />
-                <span>{COMPANY.phone}</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Mail size={14} className="text-orange-500" />
-                <span>{COMPANY.email}</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Clock size={14} className="text-orange-500" />
-                <span>Mon-Fri: 8AM-6PM • Sat: 9AM-1PM</span>
-              </div>
-            </div>
-            <div className="flex items-center gap-4">
-              <a href="#" className="text-gray-300 hover:text-orange-500 transition">
-                <Instagram size={16} />
-              </a>
-              <a href="#" className="text-gray-300 hover:text-orange-500 transition">
-                <Twitter size={16} />
-              </a>
-              <a href="#" className="text-gray-300 hover:text-orange-500 transition">
-                <Linkedin size={16} />
-              </a>
-            </div>
+      {/* Header Skeleton */}
+      <div className="h-16 md:h-20 bg-white border-b border-stone-200 sticky top-0 z-50 flex items-center px-4">
+        <div className="max-w-7xl mx-auto w-full flex justify-between items-center">
+          <div className="w-12 h-12 bg-gradient-to-r from-stone-200 to-stone-100 rounded-lg animate-pulse" />
+          <div className="hidden md:flex gap-6">
+            {[...Array(5)].map((_, i) => (
+              <div key={i} className="w-20 h-4 bg-gradient-to-r from-stone-200 to-stone-100 rounded animate-pulse" />
+            ))}
           </div>
+          <div className="w-10 h-10 bg-gradient-to-r from-stone-200 to-stone-100 rounded animate-pulse" />
         </div>
+      </div>
 
-        {/* Main Navigation */}
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex justify-between items-center">
-            {/* Logo */}
-            <a href="#home" className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-orange-500 rounded-lg flex items-center justify-center">
-                <Building2 className="text-white" size={24} />
+      {/* Hero Skeleton */}
+      <section className="py-12 md:py-24 px-4 md:px-6">
+        <div className="max-w-4xl mx-auto">
+          <div className="h-8 md:h-16 bg-gradient-to-r from-stone-200 to-stone-100 rounded-lg animate-pulse mb-6" />
+          <div className="h-6 md:h-10 bg-gradient-to-r from-stone-200 to-stone-100 rounded-lg animate-pulse mb-4 w-3/4" />
+          <div className="h-4 md:h-6 bg-gradient-to-r from-stone-200 to-stone-100 rounded-lg animate-pulse mb-8 w-2/3" />
+          <div className="h-12 w-40 bg-gradient-to-r from-stone-200 to-stone-100 rounded-lg animate-pulse" />
+        </div>
+      </section>
+
+      {/* Services Grid Skeleton (2 columns mobile) */}
+      <section className="py-12 md:py-24 px-4 md:px-6 bg-stone-50">
+        <div className="max-w-7xl mx-auto">
+          <div className="h-6 md:h-8 bg-gradient-to-r from-stone-200 to-stone-100 rounded-lg animate-pulse mb-4 w-32" />
+          <div className="h-8 md:h-12 bg-gradient-to-r from-stone-200 to-stone-100 rounded-lg animate-pulse mb-12 w-48" />
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
+            {[...Array(6)].map((_, i) => (
+              <div key={i} className="bg-white rounded-lg p-4 md:p-6 border border-stone-200">
+                <div className="w-10 h-10 bg-gradient-to-r from-stone-200 to-stone-100 rounded-lg animate-pulse mb-4" />
+                <div className="h-5 bg-gradient-to-r from-stone-200 to-stone-100 rounded animate-pulse mb-2 w-2/3" />
+                <div className="h-4 bg-gradient-to-r from-stone-200 to-stone-100 rounded animate-pulse mb-4 w-full" />
+                <div className="h-3 bg-gradient-to-r from-stone-200 to-stone-100 rounded animate-pulse mb-2 w-full" />
+                <div className="h-3 bg-gradient-to-r from-stone-200 to-stone-100 rounded animate-pulse w-3/4" />
               </div>
-              <div>
-                <div className="font-bold text-xl text-white">{COMPANY.shortName}</div>
-                <div className="text-xs text-gray-300">Building Since {COMPANY.founded}</div>
-              </div>
-            </a>
-
-            {/* Desktop Navigation */}
-            <ul className="hidden lg:flex items-center gap-8">
-              {NAV_LINKS.map((link) => (
-                <li
-                  key={link.title}
-                  className="relative"
-                  onMouseEnter={() => link.dropdown && setActiveDropdown(link.title)}
-                  onMouseLeave={() => link.dropdown && setActiveDropdown(null)}
-                >
-                  <a
-                    href={link.href}
-                    className={`font-semibold text-sm uppercase tracking-wider transition ${
-                      activeSection === link.href?.replace('#', '') 
-                        ? "text-orange-500" 
-                        : "text-white hover:text-orange-500"
-                    }`}
-                  >
-                    {link.title}
-                    {link.dropdown && <ChevronDown className="inline ml-1" size={14} />}
-                  </a>
-
-                  {link.dropdown && activeDropdown === link.title && (
-                    <div className="absolute top-full left-0 mt-2 w-56 bg-white rounded-lg shadow-2xl border border-stone-200 py-2 z-50">
-                      {link.dropdown.map((sub) => (
-                        <a
-                          key={sub.name}
-                          href={sub.href}
-                          className="block px-4 py-3 text-gray-800 hover:bg-orange-50 hover:text-orange-600 text-sm transition border-b border-stone-100 last:border-b-0"
-                        >
-                          {sub.name}
-                        </a>
-                      ))}
-                    </div>
-                  )}
-                </li>
-              ))}
-              <button className="bg-orange-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-orange-600 transition shadow-lg hover:shadow-xl">
-                Request Quote
-              </button>
-            </ul>
-
-            {/* Mobile Menu Button */}
-            <button
-              className="lg:hidden text-white"
-              onClick={() => setMenuOpen(!menuOpen)}
-            >
-              {menuOpen ? <X size={28} /> : <Menu size={28} />}
-            </button>
-          </div>
-        </div>
-      </nav>
-
-      {/* ==================== HERO SECTION ==================== */}
-      <section id="home" className="relative min-h-screen flex items-center justify-center pt-16">
-        {/* Background Image with Gradient Overlay */}
-        <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/70 to-black/60 z-10" />
-          <div className="absolute inset-0 bg-[url('/construction-site-africa.jpg')] bg-cover bg-center" />
-        </div>
-
-        {/* Hero Content */}
-        <div className="relative z-20 max-w-6xl mx-auto px-6 text-center text-white">
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={fadeUp}
-          >
-            <motion.span 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="inline-block bg-orange-500 text-white px-4 py-2 rounded-full text-sm font-semibold mb-6"
-            >
-              CONSTRUCTION EXPERTS SINCE {COMPANY.founded}
-            </motion.span>
-            <motion.h1 
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
-              className="text-5xl md:text-7xl font-bold mb-6 leading-tight"
-            >
-              Building Africa's <span className="text-orange-500">Future</span>
-              <br />One Project at a Time
-            </motion.h1>
-            <motion.p 
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6 }}
-              className="text-xl md:text-2xl text-gray-300 mb-10 max-w-3xl mx-auto"
-            >
-              We deliver high-quality construction solutions across Kenya and Africa — safely, professionally, and on schedule.
-            </motion.p>
-            <motion.div 
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.8 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center"
-            >
-              <button className="bg-orange-500 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-orange-600 transition shadow-lg hover:shadow-xl">
-                Request a Free Quote
-              </button>
-              <button className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white/10 transition">
-                View Our Projects
-              </button>
-            </motion.div>
-          </motion.div>
-        </div>
-
-        {/* Stats Overlay */}
-        <div className="absolute bottom-0 left-0 right-0 z-20">
-          <div className="max-w-7xl mx-auto px-6">
-            <motion.div 
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1 }}
-              className="grid grid-cols-2 md:grid-cols-4 bg-stone-800/90 backdrop-blur rounded-t-2xl p-6 shadow-2xl"
-            >
-              <StatCard icon={Building2} value="10+" label="Years Experience" />
-              <StatCard icon={Award} value="250+" label="Projects Completed" />
-              <StatCard icon={Globe} value="East & Central" label="Africa Regions Served" />
-              <StatCard icon={Shield} value="100%" label="Safety Record" />
-            </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
+      {/* Projects Grid Skeleton */}
+      <section className="py-12 md:py-24 px-4 md:px-6 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="h-6 md:h-8 bg-gradient-to-r from-stone-200 to-stone-100 rounded-lg animate-pulse mb-4 w-32" />
+          <div className="h-8 md:h-12 bg-gradient-to-r from-stone-200 to-stone-100 rounded-lg animate-pulse mb-12 w-32" />
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
+            {[...Array(6)].map((_, i) => (
+              <div key={i} className="bg-stone-100 rounded-lg overflow-hidden">
+                <div className="h-40 md:h-48 bg-gradient-to-r from-stone-200 to-stone-100 animate-pulse mb-4" />
+                <div className="p-4">
+                  <div className="h-4 bg-gradient-to-r from-stone-200 to-stone-100 rounded animate-pulse mb-2 w-2/3" />
+                  <div className="h-3 bg-gradient-to-r from-stone-200 to-stone-100 rounded animate-pulse w-1/2" />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Grid Skeleton */}
+      <section className="py-12 md:py-24 px-4 md:px-6 bg-stone-50">
+        <div className="max-w-7xl mx-auto">
+          <div className="h-6 md:h-8 bg-gradient-to-r from-stone-200 to-stone-100 rounded-lg animate-pulse mb-4 w-40" />
+          <div className="h-8 md:h-12 bg-gradient-to-r from-stone-200 to-stone-100 rounded-lg animate-pulse mb-12 w-48" />
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
+            {[...Array(3)].map((_, i) => (
+              <div key={i} className="bg-white rounded-lg p-4 md:p-8 border border-stone-200">
+                <div className="flex gap-1 mb-3 md:mb-4">
+                  {[...Array(5)].map((_, j) => (
+                    <div key={j} className="w-3 h-3 bg-gradient-to-r from-stone-200 to-stone-100 rounded animate-pulse" />
+                  ))}
+                </div>
+                <div className="h-4 bg-gradient-to-r from-stone-200 to-stone-100 rounded animate-pulse mb-4 w-full" />
+                <div className="h-4 bg-gradient-to-r from-stone-200 to-stone-100 rounded animate-pulse mb-6 w-5/6" />
+                <div className="border-t border-stone-100 pt-3 md:pt-4">
+                  <div className="h-3 bg-gradient-to-r from-stone-200 to-stone-100 rounded animate-pulse mb-2 w-1/2" />
+                  <div className="h-2 bg-gradient-to-r from-stone-200 to-stone-100 rounded animate-pulse w-2/3" />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </main>
+  );
+
+  if (isLoading) {
+    return <SkeletonLoader />;
+  }
+
+  return (
+    <main className="scroll-smooth bg-white text-gray-800 font-sans overflow-x-hidden">
+      {/* ==================== ENTERPRISE NAVBAR ==================== */}
+      <nav className={`fixed w-full z-50 transition-all duration-300 ${
+        isScrolled ? "bg-white shadow-2xl border-b border-gray-100" : "bg-white border-b border-gray-100"
+      }`}>
+        {/* Top Info Bar - Professional Contact Information */}
+        <div className="hidden lg:block bg-white py-3 border-b border-gray-100">
+          <div className="max-w-7xl mx-auto px-6 flex justify-between items-center text-xs">
+            {/* Left Contact Info */}
+            <div className="flex items-center gap-8">
+              <div className="flex items-center gap-2 text-gray-600 hover:text-orange-600 transition cursor-pointer">
+                <Phone size={13} className="text-orange-600" />
+                <a href={`tel:${COMPANY.phone}`} className="font-medium">{COMPANY.phone}</a>
+              </div>
+              <div className="w-px h-4 bg-gray-200"></div>
+              <div className="flex items-center gap-2 text-gray-600 hover:text-orange-600 transition cursor-pointer">
+                <Mail size={13} className="text-orange-600" />
+                <a href={`mailto:${COMPANY.email}`} className="font-medium">{COMPANY.email}</a>
+              </div>
+            </div>
+            
+            {/* Center Social Links */}
+            <div className="flex items-center gap-5">
+              <motion.a 
+                href="#" 
+                whileHover={{ scale: 1.15, color: "#f97316" }}
+                className="text-gray-500 hover:text-orange-600 transition-colors duration-200" 
+                title="Instagram"
+              >
+                <Instagram size={16} />
+              </motion.a>
+              <motion.a 
+                href="#" 
+                whileHover={{ scale: 1.15, color: "#f97316" }}
+                className="text-gray-500 hover:text-orange-600 transition-colors duration-200" 
+                title="Twitter"
+              >
+                <Twitter size={16} />
+              </motion.a>
+              <motion.a 
+                href="#" 
+                whileHover={{ scale: 1.15, color: "#f97316" }}
+                className="text-gray-500 hover:text-orange-600 transition-colors duration-200" 
+                title="LinkedIn"
+              >
+                <Linkedin size={16} />
+              </motion.a>
+            </div>
+            
+            {/* Right Hours */}
+            <div className="flex items-center gap-2 text-gray-600 ml-8">
+              <Clock size={13} className="text-orange-600" />
+              <span className="font-medium">Mon-Fri: 8AM-6PM • Sat: 9AM-1PM</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Main Navigation Bar */}
+        <div className="max-w-7xl mx-auto px-4 md:px-6 py-4">
+          <div className="flex justify-between items-center gap-4">
+            {/* Logo Section */}
+            <motion.a 
+              href="#home" 
+              whileHover={{ scale: 1.02 }}
+              className="flex items-center gap-2 md:gap-3 flex-shrink-0 cursor-pointer"
+            >
+              <div className="w-10 md:w-11 h-10 md:h-11 bg-orange-600 rounded-lg flex items-center justify-center shadow-md hover:shadow-lg transition-shadow">
+                <Building2 className="text-white" size={20} />
+              </div>
+              <div className="hidden sm:flex flex-col">
+                <span className="font-bold text-xs md:text-sm text-gray-900 leading-tight">{COMPANY.shortName}</span>
+                <span className="text-xs text-gray-500">Est. {COMPANY.founded}</span>
+              </div>
+            </motion.a>
+
+            {/* Center Social Links - Visible on Mobile & Desktop */}
+            <div className="flex items-center gap-3 md:gap-4 flex-1 justify-center md:hidden lg:flex">
+              <motion.a 
+                href="#" 
+                whileHover={{ scale: 1.2 }}
+                className="text-gray-500 hover:text-orange-600 transition-colors" 
+                title="Instagram"
+              >
+                <Instagram size={18} />
+              </motion.a>
+              <motion.a 
+                href="#" 
+                whileHover={{ scale: 1.2 }}
+                className="text-gray-500 hover:text-orange-600 transition-colors" 
+                title="Twitter"
+              >
+                <Twitter size={18} />
+              </motion.a>
+              <motion.a 
+                href="#" 
+                whileHover={{ scale: 1.2 }}
+                className="text-gray-500 hover:text-orange-600 transition-colors" 
+                title="LinkedIn"
+              >
+                <Linkedin size={18} />
+              </motion.a>
+            </div>
+
+            {/* Desktop Navigation Links */}
+            <ul className="hidden lg:flex items-center gap-1">
+              {NAV_LINKS.map((link) => (
+                <li
+                  key={link.title}
+                  className="relative group"
+                  onMouseEnter={() => link.dropdown && setActiveDropdown(link.title)}
+                  onMouseLeave={() => link.dropdown && setActiveDropdown(null)}
+                >
+                  <motion.a
+                    href={link.href}
+                    whileHover={{ y: -2 }}
+                    className={`px-3 py-2 text-sm font-semibold uppercase tracking-wide transition-all duration-300 rounded-md inline-flex items-center gap-1 ${
+                      activeSection === link.href?.replace('#', '') 
+                        ? "text-orange-600" 
+                        : "text-gray-700 hover:text-orange-600"
+                    }`}
+                  >
+                    {link.title}
+                    {link.dropdown && <ChevronDown size={13} className="transition-transform group-hover:rotate-180" />}
+                  </motion.a>
+
+                  {/* Dropdown Menu */}
+                  {link.dropdown && activeDropdown === link.title && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      transition={{ duration: 0.2 }}
+                      className="absolute left-0 mt-0 w-48 bg-white rounded-lg shadow-lg border border-gray-100 py-2 z-50"
+                    >
+                      {link.dropdown.map((sub) => (
+                        <motion.a
+                          key={sub.name}
+                          href={sub.href}
+                          whileHover={{ x: 4 }}
+                          className="block px-4 py-2.5 text-gray-700 hover:bg-orange-50 hover:text-orange-600 text-sm font-medium transition-colors border-b border-gray-50 last:border-b-0"
+                        >
+                          {sub.name}
+                        </motion.a>
+                      ))}
+                    </motion.div>
+                  )}
+                </li>
+              ))}
+            </ul>
+
+            {/* CTA Button */}
+            <motion.a
+              href="#contact"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="hidden lg:block bg-orange-600 text-white px-6 md:px-7 py-2 md:py-2.5 rounded-lg text-xs md:text-sm font-bold uppercase tracking-wide hover:bg-orange-700 shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer flex-shrink-0"
+            >
+              Get Quote
+            </motion.a>
+
+            {/* Mobile Menu Button */}
+            <motion.button
+              whileTap={{ scale: 0.95 }}
+              className="lg:hidden text-gray-700 hover:text-orange-600 transition-colors p-2"
+              onClick={() => setMenuOpen(!menuOpen)}
+            >
+              {menuOpen ? <X size={24} /> : <Menu size={24} />}
+            </motion.button>
+          </div>
+        </div>
+      </nav>
+
+      {/* ==================== PROFESSIONAL HERO SECTION ==================== */}
+      <section id="home" className="relative w-full min-h-screen flex items-center pt-16 md:pt-20">
+        {/* Full-Width Background Image with Subtle Overlay */}
+        <div className="absolute inset-0 z-0">
+          {/* High-Quality Construction Site Background */}
+          <div className="absolute inset-0 bg-[url('/teams/HERO.jpg')] bg-cover bg-center" />
+          
+          {/* Professional Dark Overlay - Subtle but Effective */}
+          <div className="absolute inset-0 bg-black/45" />
+        </div>
+
+        {/* Content Container - Positioned Left */}
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 md:px-6 lg:px-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 lg:gap-12 items-center">
+            {/* Left-Aligned Content */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8 }}
+              className="text-white space-y-5 md:space-y-8"
+            >
+              {/* Primary Headline - Bold & Confident */}
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2, duration: 0.6 }}
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight tracking-tight"
+              >
+                Building Africa's Future with Quality, Integrity & Precision
+              </motion.h1>
+
+              {/* Supporting Sub-Headline - Clear & Reassuring */}
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4, duration: 0.6 }}
+                className="text-sm md:text-lg lg:text-xl text-white/95 leading-relaxed max-w-2xl font-light"
+              >
+                We deliver professional construction solutions across Kenya and Africa — from residential and commercial developments to large-scale infrastructure projects.
+              </motion.p>
+
+              {/* Trust Signals - Credibility Cues */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6, duration: 0.6 }}
+                className="flex flex-col gap-2 md:gap-3 pt-2 md:pt-4"
+              >
+                <div className="flex items-center gap-2 md:gap-3">
+                  <div className="w-2 h-2 bg-white rounded-full flex-shrink-0" />
+                  <span className="text-xs md:text-base font-medium text-white/90">NCA Registered Contractor</span>
+                </div>
+                <div className="flex items-center gap-2 md:gap-3">
+                  <div className="w-2 h-2 bg-white rounded-full flex-shrink-0" />
+                  <span className="text-xs md:text-base font-medium text-white/90">10+ Years of Experience</span>
+                </div>
+                <div className="flex items-center gap-2 md:gap-3">
+                  <div className="w-2 h-2 bg-white rounded-full flex-shrink-0" />
+                  <span className="text-xs md:text-base font-medium text-white/90">Projects Delivered Across East Africa</span>
+                </div>
+              </motion.div>
+
+              {/* CTA Buttons - Primary & Secondary */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.8, duration: 0.6 }}
+                className="flex flex-col sm:flex-row gap-3 md:gap-4 pt-4 md:pt-6"
+              >
+                {/* Primary CTA - Orange Button */}
+                <motion.a
+                  href="#contact"
+                  whileHover={{ scale: 1.1, y: -3 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="group inline-flex items-center justify-center gap-2 bg-orange-600 hover:bg-orange-700 text-white font-bold text-sm md:text-base px-6 md:px-8 py-2.5 md:py-3 rounded-lg transition-all duration-300 shadow-lg hover:shadow-2xl cursor-pointer"
+                >
+                  Get Free Quote
+                  <motion.div
+                    animate={{ x: [0, 4, 0] }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                  >
+                    <ArrowRight className="w-4 h-4" />
+                  </motion.div>
+                </motion.a>
+
+                {/* Secondary CTA - Outlined Button */}
+                <motion.a
+                  href="#projects"
+                  whileHover={{ scale: 1.1, y: -3 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="group inline-flex items-center justify-center gap-2 border-2 border-white/70 hover:border-white text-white font-bold text-sm md:text-base px-6 md:px-8 py-2.5 md:py-3 rounded-lg backdrop-blur-sm hover:bg-white/10 transition-all duration-300 cursor-pointer"
+                >
+                  View Projects
+                  <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </motion.a>
+              </motion.div>
+            </motion.div>
+
+            {/* Right Side - Empty Space for Image/Design Balance */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1, duration: 0.8 }}
+              className="hidden lg:block"
+            >
+              {/* Subtle white accent box for visual balance */}
+              <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-8 space-y-6">
+                <div className="space-y-4">
+                  <h3 className="text-xl font-bold text-white">Why Choose BI-LOR</h3>
+                  <ul className="space-y-3 text-white/90 text-sm">
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-orange-600 flex-shrink-0 mt-0.5" />
+                      <span>Professional project management and execution</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-orange-600 flex-shrink-0 mt-0.5" />
+                      <span>Certified safety and quality standards</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-orange-600 flex-shrink-0 mt-0.5" />
+                      <span>On-time and on-budget delivery</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-orange-600 flex-shrink-0 mt-0.5" />
+                      <span>Transparent communication & support</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+
+        {/* Scroll Indicator - Subtle */}
+        <motion.div
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 3, repeat: Infinity }}
+          className="absolute bottom-6 md:bottom-8 left-1/2 transform -translate-x-1/2 z-10"
+        >
+          <div className="text-white/60 text-center">
+            <ChevronDown className="w-5 md:w-6 h-5 md:h-6 mx-auto" />
+          </div>
+        </motion.div>
+      </section>
+
       {/* ==================== ABOUT SECTION ==================== */}
-      <section id="about" className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+      <section id="about" className="py-12 md:py-20 lg:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 md:px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center">
             <motion.div
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
               variants={fadeUp}
             >
-              <span className="text-orange-500 font-semibold tracking-wider">ABOUT OUR COMPANY</span>
-              <h2 className="text-4xl font-bold text-black mt-4 mb-6">
-                Trusted Construction Experts in Kenya & Beyond
+              <span className="text-orange-600 font-semibold tracking-wider text-sm">ABOUT OUR COMPANY</span>
+              <h2 className="text-3xl md:text-4xl font-bold text-black mt-3 md:mt-4 mb-4 md:mb-6">
+                Structural Engineering Excellence in Kenya
               </h2>
-              <p className="text-gray-600 mb-6">
-                We are a professional construction company delivering residential, commercial, and infrastructure projects across Kenya and the African region.
+              <p className="text-gray-600 text-sm md:text-base mb-4 md:mb-6 leading-relaxed">
+                {COMPANY.overview}
               </p>
-              <p className="text-gray-600 mb-8">
-                With a commitment to quality, safety, and timely delivery, we partner with clients to turn ideas into lasting structures.
+              <p className="text-gray-600 text-sm md:text-base mb-6 md:mb-8 leading-relaxed">
+                We combine innovation with proven engineering practices to deliver structurally sound, sustainably designed solutions for every project.
               </p>
               
-              <div className="space-y-4">
+              <div className="space-y-3 md:space-y-4">
                 <motion.div 
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -725,8 +961,8 @@ export default function EnterpriseConstructionPage() {
                   transition={{ delay: 0.1 }}
                   className="flex items-center gap-3"
                 >
-                  <CheckCircle className="text-orange-500" size={20} />
-                  <span className="font-medium text-black">NCA Registered Contractor</span>
+                  <CheckCircle className="text-orange-600 flex-shrink-0" size={18} />
+                  <span className="font-medium text-black text-sm md:text-base">Structural Design & Analysis</span>
                 </motion.div>
                 <motion.div 
                   initial={{ opacity: 0, x: -20 }}
@@ -735,8 +971,8 @@ export default function EnterpriseConstructionPage() {
                   transition={{ delay: 0.2 }}
                   className="flex items-center gap-3"
                 >
-                  <CheckCircle className="text-orange-500" size={20} />
-                  <span className="font-medium text-black">ISO 9001:2015 Certified</span>
+                  <CheckCircle className="text-orange-600 flex-shrink-0" size={18} />
+                  <span className="font-medium text-black text-sm md:text-base">Project Management & Coordination</span>
                 </motion.div>
                 <motion.div 
                   initial={{ opacity: 0, x: -20 }}
@@ -745,8 +981,8 @@ export default function EnterpriseConstructionPage() {
                   transition={{ delay: 0.3 }}
                   className="flex items-center gap-3"
                 >
-                  <CheckCircle className="text-orange-500" size={20} />
-                  <span className="font-medium text-black">OSHA Compliance Certified</span>
+                  <CheckCircle className="text-orange-600 flex-shrink-0" size={18} />
+                  <span className="font-medium text-black text-sm md:text-base">Expert Consulting Services</span>
                 </motion.div>
               </div>
             </motion.div>
@@ -758,20 +994,23 @@ export default function EnterpriseConstructionPage() {
               variants={fadeUp}
               className="relative"
             >
-              <div className="bg-stone-100 rounded-2xl p-8 border border-stone-200">
-                <div className="text-center mb-8">
-                  <Target className="text-orange-500 mx-auto mb-4" size={48} />
-                  <h3 className="text-2xl font-bold text-black mb-4">Our Mission & Vision</h3>
-                  <p className="text-gray-600 mb-6">
-                    To be Africa's most trusted construction partner, delivering innovative and sustainable building solutions that shape communities.
+              <div className="bg-stone-100 rounded-xl md:rounded-2xl p-6 md:p-8 border border-stone-200">
+                <div className="text-center mb-6 md:mb-8">
+                  <Target className="text-orange-600 mx-auto mb-3 md:mb-4" size={40} />
+                  <h3 className="text-xl md:text-2xl font-bold text-black mb-3 md:mb-4">Our Mission & Vision</h3>
+                  <p className="text-gray-600 text-sm md:text-base mb-4 md:mb-6 leading-relaxed">
+                    <strong>Mission:</strong> {COMPANY.mission}
+                  </p>
+                  <p className="text-gray-600 text-sm md:text-base leading-relaxed">
+                    <strong>Vision:</strong> {COMPANY.vision}
                   </p>
                 </div>
                 
-                <div className="grid grid-cols-3 gap-4 text-center">
+                <div className="grid grid-cols-3 gap-3 md:gap-4 text-center mt-6 md:mt-8">
                   {[
-                    { value: "10+", label: "Years" },
-                    { value: "250+", label: "Projects" },
-                    { value: "50+", label: "Team Members" }
+                    { value: "Structural Design", label: "Expertise" },
+                    { value: "100+", label: "Projects" },
+                    { value: "10+", label: "Years" }
                   ].map((stat, idx) => (
                     <motion.div
                       key={idx}
@@ -780,10 +1019,10 @@ export default function EnterpriseConstructionPage() {
                       viewport={{ once: true }}
                       transition={{ delay: idx * 0.1 }}
                       whileHover={{ scale: 1.05 }}
-                      className="bg-white p-4 rounded-lg border border-stone-200 cursor-pointer"
+                      className="bg-white p-3 md:p-4 rounded-lg border border-stone-200 cursor-pointer transition-all"
                     >
-                      <div className="text-2xl font-bold text-orange-500 mb-1">{stat.value}</div>
-                      <div className="text-sm text-gray-600">{stat.label}</div>
+                      <div className="text-sm md:text-lg font-bold text-orange-600 mb-0.5 md:mb-1">{stat.value}</div>
+                      <div className="text-xs md:text-sm text-gray-600">{stat.label}</div>
                     </motion.div>
                   ))}
                 </div>
@@ -794,27 +1033,27 @@ export default function EnterpriseConstructionPage() {
       </section>
 
       {/* ==================== OUR TEAM SECTION ==================== */}
-      <section id="team" className="py-24 bg-stone-50 relative overflow-hidden">
+      <section id="team" className="py-12 md:py-20 lg:py-24 bg-stone-50 relative overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
         
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <div className="max-w-7xl mx-auto px-4 md:px-6 relative z-10">
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={textReveal}
-            className="text-center mb-16"
+            className="text-center mb-10 md:mb-16"
           >
-            <span className="text-orange-500 font-semibold tracking-wider">MEET THE LEADERS</span>
-            <h2 className="text-4xl font-bold text-black mt-4 mb-6">Our Executive Team</h2>
-            <p className="text-gray-600 max-w-3xl mx-auto">
+            <span className="text-orange-600 font-semibold tracking-wider text-sm">MEET THE LEADERS</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-black mt-3 md:mt-4 mb-3 md:mb-6">Our Executive Team</h2>
+            <p className="text-gray-600 text-sm md:text-base max-w-3xl mx-auto leading-relaxed px-2">
               Led by industry veterans with decades of combined experience in construction, engineering, and project management across Africa.
             </p>
           </motion.div>
 
           {/* Team Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {TEAM_MEMBERS.map((member, index) => (
               <TeamMemberCard key={index} member={member} index={index} />
             ))}
@@ -826,9 +1065,9 @@ export default function EnterpriseConstructionPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="mt-24 bg-black text-white rounded-2xl p-8 shadow-2xl"
+            className="mt-12 md:mt-20 lg:mt-24 bg-black text-white rounded-xl md:rounded-2xl p-6 md:p-8 shadow-2xl"
           >
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 lg:gap-8">
               {[
                 { value: "150+", label: "Combined Years Experience", icon: BriefcaseBusiness },
                 { value: "25+", label: "Professional Certifications", icon: Award },
@@ -846,13 +1085,13 @@ export default function EnterpriseConstructionPage() {
                     whileHover={{ y: -5 }}
                     className="text-center group cursor-pointer"
                   >
-                    <div className="flex justify-center mb-4">
-                      <div className="p-3 bg-stone-800 rounded-full group-hover:bg-orange-500 transition-colors duration-300">
-                        <Icon className="text-orange-500 group-hover:text-white transition-colors duration-300" size={24} />
+                    <div className="flex justify-center mb-2 md:mb-4">
+                      <div className="p-2 md:p-3 bg-stone-800 rounded-full group-hover:bg-orange-600 transition-colors duration-300">
+                        <Icon className="text-orange-600 group-hover:text-white transition-colors duration-300" size={20} />
                       </div>
                     </div>
-                    <div className="text-3xl font-bold text-white mb-2">{stat.value}</div>
-                    <div className="text-sm text-gray-300">{stat.label}</div>
+                    <div className="text-2xl md:text-3xl font-bold text-white mb-1 md:mb-2">{stat.value}</div>
+                    <div className="text-xs md:text-sm text-gray-300 leading-tight">{stat.label}</div>
                   </motion.div>
                 );
               })}
@@ -865,34 +1104,41 @@ export default function EnterpriseConstructionPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="mt-16 text-center"
+            className="mt-10 md:mt-16 text-center px-4"
           >
-            <div className="inline-flex items-center gap-4 bg-white border border-stone-200 rounded-full px-8 py-4 shadow-lg">
+            <motion.div 
+              whileHover={{ scale: 1.02 }}
+              className="flex flex-col sm:flex-row items-center justify-center gap-4 bg-white border border-stone-200 rounded-lg md:rounded-full p-4 md:px-8 md:py-4 shadow-lg hover:shadow-xl transition-all"
+            >
               <div className="text-left">
-                <h4 className="font-bold text-black">Join Our Growing Team</h4>
-                <p className="text-sm text-gray-600">Career opportunities at BI-LOR Construction</p>
+                <h4 className="font-bold text-black text-base md:text-lg">Join Our Growing Team</h4>
+                <p className="text-xs md:text-sm text-gray-600">Career opportunities at BI-LOR Construction</p>
               </div>
-              <button className="bg-orange-500 text-white px-6 py-3 rounded-full font-semibold hover:bg-orange-600 transition">
+              <motion.button 
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-orange-600 text-white px-6 md:px-8 py-2.5 md:py-3 rounded-lg md:rounded-full font-semibold hover:bg-orange-700 transition w-full sm:w-auto flex-shrink-0"
+              >
                 View Openings
-              </button>
-            </div>
+              </motion.button>
+            </motion.div>
           </motion.div>
         </div>
       </section>
 
       {/* ==================== SERVICES SECTION ==================== */}
-      <section id="services" className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
+      <section id="services" className="py-12 md:py-20 lg:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 md:px-6">
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={textReveal}
-            className="text-center mb-16"
+            className="text-center mb-10 md:mb-16"
           >
-            <span className="text-orange-500 font-semibold tracking-wider">OUR EXPERTISE</span>
-            <h2 className="text-4xl font-bold text-black mt-4 mb-6">Our Construction Services</h2>
-            <p className="text-gray-600 max-w-3xl mx-auto">
+            <span className="text-orange-600 font-semibold tracking-wider text-sm">OUR EXPERTISE</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-black mt-3 md:mt-4 mb-3 md:mb-6">Our Construction Services</h2>
+            <p className="text-gray-600 text-sm md:text-base max-w-3xl mx-auto leading-relaxed px-2">
               Comprehensive construction solutions tailored to meet the unique demands of African infrastructure and development.
             </p>
           </motion.div>
@@ -902,7 +1148,7 @@ export default function EnterpriseConstructionPage() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8"
           >
             {SERVICES.map((service, index) => (
               <motion.div key={index} variants={fadeUp}>
@@ -914,27 +1160,27 @@ export default function EnterpriseConstructionPage() {
       </section>
 
       {/* ==================== PROJECTS SECTION ==================== */}
-      <section id="projects" className="py-24 bg-stone-50">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex justify-between items-end mb-16">
+      <section id="projects" className="py-12 md:py-20 lg:py-24 bg-stone-50">
+        <div className="max-w-7xl mx-auto px-4 md:px-6">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 md:gap-0 mb-10 md:mb-16">
             <motion.div
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
               variants={fadeUp}
             >
-              <span className="text-orange-500 font-semibold tracking-wider">OUR PORTFOLIO</span>
-              <h2 className="text-4xl font-bold text-black mt-4">Our Work Speaks for Itself</h2>
-              <p className="text-gray-600 mt-2">A selection of completed and ongoing projects across Kenya and Africa.</p>
+              <span className="text-orange-600 font-semibold tracking-wider text-sm">OUR PORTFOLIO</span>
+              <h2 className="text-3xl md:text-4xl font-bold text-black mt-3 md:mt-4">Our Work Speaks for Itself</h2>
+              <p className="text-gray-600 text-sm md:text-base mt-2 md:mt-3">A selection of completed and ongoing projects across Kenya and Africa.</p>
             </motion.div>
             <motion.button
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               whileHover={{ scale: 1.05 }}
-              className="text-orange-500 font-semibold flex items-center hover:text-orange-600"
+              className="text-orange-600 font-semibold flex items-center gap-2 hover:text-orange-700 transition text-sm md:text-base flex-shrink-0"
             >
-              View All Projects <ArrowRight className="ml-2" size={20} />
+              View All Projects <ArrowRight size={18} />
             </motion.button>
           </div>
 
@@ -943,7 +1189,7 @@ export default function EnterpriseConstructionPage() {
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8"
           >
             {PROJECTS.slice(0, 6).map((project, index) => (
               <motion.div key={index} variants={fadeUp}>
@@ -955,23 +1201,23 @@ export default function EnterpriseConstructionPage() {
       </section>
 
       {/* ==================== WHY CHOOSE US ==================== */}
-      <section id="why-us" className="py-24 bg-black text-white">
-        <div className="max-w-7xl mx-auto px-6">
+      <section id="why-us" className="py-12 md:py-20 lg:py-24 bg-black text-white">
+        <div className="max-w-7xl mx-auto px-4 md:px-6">
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={textReveal}
-            className="text-center mb-16"
+            className="text-center mb-10 md:mb-16"
           >
-            <span className="text-orange-500 font-semibold tracking-wider">THE BI-LOR DIFFERENCE</span>
-            <h2 className="text-4xl font-bold text-white mt-4 mb-6">Why Clients Choose Us</h2>
-            <p className="text-gray-400 max-w-3xl mx-auto">
+            <span className="text-orange-600 font-semibold tracking-wider text-sm">THE BI-LOR DIFFERENCE</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mt-3 md:mt-4 mb-3 md:mb-6">Why Clients Choose Us</h2>
+            <p className="text-gray-400 text-sm md:text-base max-w-3xl mx-auto leading-relaxed px-2">
               We combine local expertise with international standards to deliver exceptional results across Africa.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
             {[
               {
                 icon: TrendingUp,
@@ -1013,18 +1259,18 @@ export default function EnterpriseConstructionPage() {
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
                   whileHover={{ y: -10 }}
-                  className="bg-stone-900 rounded-xl p-8 border border-stone-800 hover:border-orange-500/30 transition-all duration-300"
+                  className="bg-stone-900 rounded-lg md:rounded-xl p-6 md:p-8 border border-stone-800 hover:border-orange-600/50 transition-all duration-300 h-full flex flex-col"
                 >
-                  <div className="flex items-center gap-4 mb-6">
+                  <div className="flex items-start gap-3 md:gap-4 mb-4 md:mb-6">
                     <motion.div 
-                      className="p-3 bg-stone-800 rounded-lg"
+                      className="p-2 md:p-3 bg-stone-800 rounded-lg flex-shrink-0"
                       whileHover={{ rotate: 5, scale: 1.1 }}
                     >
-                      <Icon className="text-orange-500" size={24} />
+                      <Icon className="text-orange-600" size={20} />
                     </motion.div>
-                    <h3 className="text-xl font-bold text-white">{item.title}</h3>
+                    <h3 className="text-lg md:text-xl font-bold text-white leading-tight">{item.title}</h3>
                   </div>
-                  <p className="text-gray-400">{item.desc}</p>
+                  <p className="text-gray-400 text-sm md:text-base leading-relaxed flex-grow">{item.desc}</p>
                 </motion.div>
               );
             })}
@@ -1033,33 +1279,33 @@ export default function EnterpriseConstructionPage() {
       </section>
 
       {/* ==================== SAFETY & COMPLIANCE ==================== */}
-      <section id="safety" className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+      <section id="safety" className="py-12 md:py-20 lg:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 md:px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center">
             <motion.div
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
               variants={fadeUp}
             >
-              <span className="text-orange-500 font-semibold tracking-wider">SAFETY FIRST</span>
-              <h2 className="text-4xl font-bold text-black mt-4 mb-6">Safety, Quality & Compliance</h2>
-              <p className="text-gray-600 mb-6">
+              <span className="text-orange-600 font-semibold tracking-wider text-sm">SAFETY FIRST</span>
+              <h2 className="text-3xl md:text-4xl font-bold text-black mt-3 md:mt-4 mb-4 md:mb-6">Safety, Quality & Compliance</h2>
+              <p className="text-gray-600 text-sm md:text-base mb-6 md:mb-8 leading-relaxed">
                 We operate under strict safety policies to protect our workers, clients, and the public. All projects comply with Kenyan regulations, NCA standards, and international best practices.
               </p>
               
-              <div className="space-y-6">
+              <div className="space-y-4 md:space-y-6">
                 <motion.div 
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.1 }}
-                  className="flex items-start gap-4"
+                  className="flex items-start gap-3 md:gap-4"
                 >
-                  <Shield className="text-orange-500 mt-1" size={24} />
+                  <Shield className="text-orange-600 mt-1 flex-shrink-0" size={20} />
                   <div>
-                    <h4 className="font-bold text-black mb-2">NCA Registered Contractor</h4>
-                    <p className="text-gray-600 text-sm">Level 8 certification for unlimited project value</p>
+                    <h4 className="font-bold text-black text-base md:text-lg mb-1 md:mb-2">NCA Registered Contractor</h4>
+                    <p className="text-gray-600 text-xs md:text-sm">Level 8 certification for unlimited project value</p>
                   </div>
                 </motion.div>
                 
@@ -1068,12 +1314,12 @@ export default function EnterpriseConstructionPage() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.2 }}
-                  className="flex items-start gap-4"
+                  className="flex items-start gap-3 md:gap-4"
                 >
-                  <Award className="text-orange-500 mt-1" size={24} />
+                  <Award className="text-orange-600 mt-1 flex-shrink-0" size={20} />
                   <div>
-                    <h4 className="font-bold text-black mb-2">OSHA Compliance</h4>
-                    <p className="text-gray-600 text-sm">Full adherence to occupational safety standards</p>
+                    <h4 className="font-bold text-black text-base md:text-lg mb-1 md:mb-2">OSHA Compliance</h4>
+                    <p className="text-gray-600 text-xs md:text-sm">Full adherence to occupational safety standards</p>
                   </div>
                 </motion.div>
                 
@@ -1082,12 +1328,12 @@ export default function EnterpriseConstructionPage() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.3 }}
-                  className="flex items-start gap-4"
+                  className="flex items-start gap-3 md:gap-4"
                 >
-                  <BookOpen className="text-orange-500 mt-1" size={24} />
+                  <BookOpen className="text-orange-600 mt-1 flex-shrink-0" size={20} />
                   <div>
-                    <h4 className="font-bold text-black mb-2">Environmental Standards</h4>
-                    <p className="text-gray-600 text-sm">Sustainable construction practices and waste management</p>
+                    <h4 className="font-bold text-black text-base md:text-lg mb-1 md:mb-2">Environmental Standards</h4>
+                    <p className="text-gray-600 text-xs md:text-sm">Sustainable construction practices and waste management</p>
                   </div>
                 </motion.div>
               </div>
@@ -1098,11 +1344,11 @@ export default function EnterpriseConstructionPage() {
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
               variants={fadeUp}
-              className="bg-stone-50 rounded-2xl p-8 border border-stone-200"
+              className="bg-stone-50 rounded-xl md:rounded-2xl p-6 md:p-8 border border-stone-200"
             >
-              <h3 className="text-2xl font-bold text-black mb-8 text-center">Safety Statistics</h3>
+              <h3 className="text-xl md:text-2xl font-bold text-black mb-6 md:mb-8 text-center">Safety Statistics</h3>
               
-              <div className="space-y-6">
+              <div className="space-y-4 md:space-y-6">
                 {[
                   { label: "Safety Training Hours", value: "500+", width: "100%" },
                   { label: "Equipment Inspections", value: "100%", width: "100%" },
@@ -1175,7 +1421,7 @@ export default function EnterpriseConstructionPage() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
             {TESTIMONIALS.map((testimonial, index) => (
               <motion.div
                 key={index}
@@ -1184,9 +1430,9 @@ export default function EnterpriseConstructionPage() {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.2 }}
                 whileHover={{ y: -10 }}
-                className="bg-white rounded-xl p-8 border border-stone-200 shadow-sm hover:shadow-xl transition-all duration-300"
+                className="bg-white rounded-xl p-4 md:p-8 border border-stone-200 shadow-sm hover:shadow-xl transition-all duration-300"
               >
-                <div className="flex items-center mb-6">
+                <div className="flex items-center mb-3 md:mb-6">
                   {[...Array(testimonial.rating)].map((_, i) => (
                     <motion.div
                       key={i}
@@ -1195,15 +1441,15 @@ export default function EnterpriseConstructionPage() {
                       viewport={{ once: true }}
                       transition={{ delay: index * 0.2 + i * 0.1 }}
                     >
-                      <Star className="text-orange-500 fill-orange-500" size={16} />
+                      <Star className="text-orange-500 fill-orange-500" size={14} />
                     </motion.div>
                   ))}
                 </div>
-                <Quote className="text-stone-300 mb-4" size={32} />
-                <p className="text-gray-700 mb-6 italic">"{testimonial.quote}"</p>
-                <div className="pt-6 border-t border-stone-100">
-                  <h4 className="font-bold text-black">{testimonial.name}</h4>
-                  <p className="text-sm text-gray-600">{testimonial.position}</p>
+                <Quote className="text-stone-300 mb-2 md:mb-4" size={24} />
+                <p className="text-gray-700 mb-4 md:mb-6 italic text-xs md:text-base">"{testimonial.quote}"</p>
+                <div className="pt-3 md:pt-6 border-t border-stone-100">
+                  <h4 className="font-bold text-black text-xs md:text-base">{testimonial.name}</h4>
+                  <p className="text-xs md:text-sm text-gray-600">{testimonial.position}</p>
                   <p className="text-xs text-gray-500 mt-1">{testimonial.project}</p>
                 </div>
               </motion.div>
@@ -1213,9 +1459,9 @@ export default function EnterpriseConstructionPage() {
       </section>
 
       {/* ==================== CONTACT SECTION ==================== */}
-      <section id="contact" className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-16">
+      <section id="contact" className="py-12 md:py-20 lg:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 md:px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16">
             {/* Contact Information */}
             <motion.div
               initial="hidden"
@@ -1223,10 +1469,10 @@ export default function EnterpriseConstructionPage() {
               viewport={{ once: true, margin: "-100px" }}
               variants={fadeUp}
             >
-              <span className="text-orange-500 font-semibold tracking-wider">GET IN TOUCH</span>
-              <h2 className="text-4xl font-bold text-black mt-4 mb-8">Start Your Project With Us</h2>
+              <span className="text-orange-600 font-semibold tracking-wider text-sm">GET IN TOUCH</span>
+              <h2 className="text-3xl md:text-4xl font-bold text-black mt-3 md:mt-4 mb-6 md:mb-8">Start Your Project With Us</h2>
               
-              <div className="space-y-8">
+              <div className="space-y-5 md:space-y-8">
                 {[
                   { icon: PhoneCall, title: "Call Us", detail: COMPANY.phone, sub: "Mon-Fri: 8AM-6PM, Sat: 9AM-1PM" },
                   { icon: Mail, title: "Email Us", detail: COMPANY.email, sub: "Response within 24 hours" },
@@ -1241,18 +1487,18 @@ export default function EnterpriseConstructionPage() {
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
                       transition={{ delay: idx * 0.1 }}
-                      className="flex items-start gap-4"
+                      className="flex items-start gap-3 md:gap-4"
                     >
-                      <div className="p-3 bg-black rounded-lg">
-                        <Icon className="text-orange-500" size={24} />
+                      <div className="p-2 md:p-3 bg-black rounded-lg flex-shrink-0">
+                        <Icon className="text-orange-600" size={20} />
                       </div>
-                      <div>
-                        <h4 className="font-bold text-black text-lg mb-2">{item.title}</h4>
-                        {item.detail && <p className="text-gray-600">{item.detail}</p>}
-                        {item.sub && <p className="text-gray-500 text-sm">{item.sub}</p>}
+                      <div className="min-w-0">
+                        <h4 className="font-bold text-black text-base md:text-lg mb-1 md:mb-2">{item.title}</h4>
+                        {item.detail && <p className="text-gray-600 text-sm md:text-base break-words">{item.detail}</p>}
+                        {item.sub && <p className="text-gray-500 text-xs md:text-sm">{item.sub}</p>}
                         {item.title === "Request Documents" && (
-                          <button className="text-orange-500 font-semibold hover:text-orange-600 flex items-center mt-2">
-                            {item.sub} <ArrowRight className="ml-2" size={16} />
+                          <button className="text-orange-600 font-semibold hover:text-orange-700 transition flex items-center mt-2 text-sm md:text-base">
+                            {item.sub} <ArrowRight className="ml-2" size={14} />
                           </button>
                         )}
                       </div>
@@ -1268,50 +1514,50 @@ export default function EnterpriseConstructionPage() {
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
               variants={fadeUp}
-              className="bg-stone-50 rounded-2xl p-8 border border-stone-200"
+              className="bg-stone-50 rounded-xl md:rounded-2xl p-6 md:p-8 border border-stone-200"
             >
-              <h3 className="text-2xl font-bold text-black mb-6">Send Your Project Inquiry</h3>
+              <h3 className="text-2xl md:text-2xl font-bold text-black mb-6">Send Your Project Inquiry</h3>
               
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
+              <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                   <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">Full Name *</label>
+                    <label className="block text-xs md:text-sm font-semibold text-gray-700 mb-2">Full Name *</label>
                     <input
                       type="text"
                       required
-                      className="w-full px-4 py-3 border border-stone-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none bg-white"
+                      className="w-full px-3 md:px-4 py-2 md:py-3 text-sm border border-stone-300 rounded-lg focus:ring-2 focus:ring-orange-600 focus:border-transparent outline-none bg-white"
                       value={formData.name}
                       onChange={(e) => setFormData({...formData, name: e.target.value})}
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">Phone Number *</label>
+                    <label className="block text-xs md:text-sm font-semibold text-gray-700 mb-2">Phone Number *</label>
                     <input
                       type="tel"
                       required
-                      className="w-full px-4 py-3 border border-stone-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none bg-white"
+                      className="w-full px-3 md:px-4 py-2 md:py-3 text-sm border border-stone-300 rounded-lg focus:ring-2 focus:ring-orange-600 focus:border-transparent outline-none bg-white"
                       value={formData.phone}
                       onChange={(e) => setFormData({...formData, phone: e.target.value})}
                     />
                   </div>
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                   <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">Email Address *</label>
+                    <label className="block text-xs md:text-sm font-semibold text-gray-700 mb-2">Email Address *</label>
                     <input
                       type="email"
                       required
-                      className="w-full px-4 py-3 border border-stone-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none bg-white"
+                      className="w-full px-3 md:px-4 py-2 md:py-3 text-sm border border-stone-300 rounded-lg focus:ring-2 focus:ring-orange-600 focus:border-transparent outline-none bg-white"
                       value={formData.email}
                       onChange={(e) => setFormData({...formData, email: e.target.value})}
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">Company</label>
+                    <label className="block text-xs md:text-sm font-semibold text-gray-700 mb-2">Company</label>
                     <input
                       type="text"
-                      className="w-full px-4 py-3 border border-stone-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none bg-white"
+                      className="w-full px-3 md:px-4 py-2 md:py-3 text-sm border border-stone-300 rounded-lg focus:ring-2 focus:ring-orange-600 focus:border-transparent outline-none bg-white"
                       value={formData.company}
                       onChange={(e) => setFormData({...formData, company: e.target.value})}
                     />
@@ -1319,10 +1565,10 @@ export default function EnterpriseConstructionPage() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">Project Type *</label>
+                  <label className="block text-xs md:text-sm font-semibold text-gray-700 mb-2">Project Type *</label>
                   <select
                     required
-                    className="w-full px-4 py-3 border border-stone-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none bg-white"
+                    className="w-full px-3 md:px-4 py-2 md:py-3 text-sm border border-stone-300 rounded-lg focus:ring-2 focus:ring-orange-600 focus:border-transparent outline-none bg-white"
                     value={formData.projectType}
                     onChange={(e) => setFormData({...formData, projectType: e.target.value})}
                   >
@@ -1337,11 +1583,11 @@ export default function EnterpriseConstructionPage() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">Project Details *</label>
+                  <label className="block text-xs md:text-sm font-semibold text-gray-700 mb-2">Project Details *</label>
                   <textarea
                     required
                     rows={4}
-                    className="w-full px-4 py-3 border border-stone-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none bg-white"
+                    className="w-full px-3 md:px-4 py-2 md:py-3 text-sm border border-stone-300 rounded-lg focus:ring-2 focus:ring-orange-600 focus:border-transparent outline-none bg-white resize-none"
                     value={formData.message}
                     onChange={(e) => setFormData({...formData, message: e.target.value})}
                     placeholder="Describe your project requirements, timeline, budget, and any specific needs..."
@@ -1352,9 +1598,9 @@ export default function EnterpriseConstructionPage() {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   type="submit"
-                  className="w-full bg-orange-500 text-white py-4 rounded-lg font-semibold text-lg hover:bg-orange-600 transition flex items-center justify-center shadow-lg hover:shadow-xl"
+                  className="w-full bg-orange-600 text-white py-3 md:py-4 rounded-lg font-semibold text-base md:text-lg hover:bg-orange-700 transition flex items-center justify-center gap-2 shadow-lg hover:shadow-xl"
                 >
-                  Submit Project Inquiry <Send className="ml-2" size={20} />
+                  Submit Project Inquiry <Send className="flex-shrink-0" size={18} />
                 </motion.button>
               </form>
             </motion.div>
@@ -1362,31 +1608,365 @@ export default function EnterpriseConstructionPage() {
         </div>
       </section>
 
+      {/* ==================== TESTIMONIALS SECTION ==================== */}
+      <section id="testimonials" className="py-12 md:py-20 lg:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 md:px-6">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={textReveal}
+            className="text-center mb-10 md:mb-16"
+          >
+            <span className="text-orange-600 font-semibold tracking-wider text-sm">CLIENT TESTIMONIALS</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-black mt-3 md:mt-4 mb-3 md:mb-6">What Our Clients Say</h2>
+            <p className="text-gray-600 text-sm md:text-base max-w-3xl mx-auto leading-relaxed">
+              Real feedback from satisfied clients across Kenya and Africa.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            {[
+              { name: "John Kariuki", role: "Business Owner", company: "Kariuki Enterprises", text: "Professional team, exceptional quality. BI-LOR delivered our commercial project on time and within budget. Highly recommended!" },
+              { name: "Sarah Omondi", role: "Architect", company: "Design Studio Ltd", text: "Working with BI-LOR was seamless. Their attention to detail and adherence to specifications was impressive." },
+              { name: "Moses Kipchoge", role: "CEO", company: "Real Estate Dev", text: "From concept to completion, the team demonstrated professionalism. Our residential complex is a testament to their expertise." }
+            ].map((testimonial, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1 }}
+                className="bg-stone-50 rounded-lg p-6 md:p-8 border border-stone-200 hover:border-orange-200 hover:shadow-lg transition-all"
+              >
+                <div className="flex items-center gap-1 mb-4">
+                  {[...Array(5)].map((_, i) => (
+                    <span key={i} className="text-yellow-400">★</span>
+                  ))}
+                </div>
+                <p className="text-gray-700 text-sm md:text-base mb-6 leading-relaxed italic">"{testimonial.text}"</p>
+                <div className="border-t border-stone-200 pt-4">
+                  <p className="font-bold text-gray-900 text-sm md:text-base">{testimonial.name}</p>
+                  <p className="text-gray-600 text-xs md:text-sm">{testimonial.role} at {testimonial.company}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ==================== PRICING SECTION ==================== */}
+      <section id="pricing" className="py-12 md:py-20 lg:py-24 bg-stone-50">
+        <div className="max-w-7xl mx-auto px-4 md:px-6">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={textReveal}
+            className="text-center mb-10 md:mb-16"
+          >
+            <span className="text-orange-600 font-semibold tracking-wider text-sm">TRANSPARENT PRICING</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-black mt-3 md:mt-4 mb-3 md:mb-6">Service Packages</h2>
+            <p className="text-gray-600 text-sm md:text-base max-w-3xl mx-auto leading-relaxed">
+              Flexible packages tailored to your project needs. All prices are estimates; final quotes depend on specific requirements.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8">
+            {[
+              { title: "Basic Consultation", price: "KES 5,000", desc: "Site assessment & design consultation", features: ["Site Visit", "Design Consultation", "Initial Report", "Budget Estimate"] },
+              { title: "Simple Maps", price: "KES 25,000", desc: "Location mapping & site visualization", features: ["GPS Mapping", "Site Layout", "Digital Documentation", "Client Report"] },
+              { title: "Small Projects", price: "From KES 500K", desc: "Residential & small commercial", features: ["Full Project Management", "Quality Materials", "Timeline Adherence", "Safety Compliance"] },
+              { title: "Large-Scale", price: "Custom Quote", desc: "Commercial & infrastructure", features: ["Dedicated Project Manager", "Advanced Planning", "Progress Tracking", "Premium Support"] }
+            ].map((pkg, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1 }}
+                className={`rounded-lg p-4 md:p-8 border-2 transition-all h-full flex flex-col ${
+                  idx === 2 
+                    ? "border-orange-600 bg-white shadow-lg md:scale-105" 
+                    : "border-stone-200 bg-white"
+                }`}
+              >
+                {idx === 2 && <span className="bg-orange-600 text-white px-2 py-0.5 rounded-full text-xs font-semibold w-fit mb-3 md:mb-4">POPULAR</span>}
+                <h3 className="text-base md:text-2xl font-bold text-gray-900 mb-1 md:mb-2">{pkg.title}</h3>
+                <p className="text-lg md:text-3xl font-bold text-orange-600 mb-1">{pkg.price}</p>
+                <p className="text-gray-600 text-xs md:text-sm mb-4 md:mb-6">{pkg.desc}</p>
+                <ul className="space-y-2 md:space-y-3 mb-6 md:mb-8 flex-grow">
+                  {pkg.features.map((feature, i) => (
+                    <li key={i} className="flex items-start gap-2 md:gap-3">
+                      <Check className="text-orange-600 flex-shrink-0 mt-0.5" size={14} />
+                      <span className="text-xs md:text-base text-gray-700">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  className={`w-full py-2 md:py-3 rounded-lg font-semibold text-xs md:text-base transition-all ${
+                    idx === 2
+                      ? "bg-orange-600 text-white hover:bg-orange-700"
+                      : "border-2 border-orange-600 text-orange-600 hover:bg-orange-50"
+                  }`}
+                >
+                  Get Quote
+                </motion.button>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ==================== PROCESS SECTION ==================== */}
+      <section id="process" className="py-12 md:py-20 lg:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 md:px-6">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={textReveal}
+            className="text-center mb-10 md:mb-16"
+          >
+            <span className="text-orange-600 font-semibold tracking-wider text-sm">OUR PROCESS</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-black mt-3 md:mt-4 mb-3 md:mb-6">How We Work</h2>
+            <p className="text-gray-600 text-sm md:text-base max-w-3xl mx-auto leading-relaxed">
+              From consultation to completion, our proven process ensures success.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6 lg:gap-8">
+            {[
+              { step: "01", title: "Consultation", desc: "We understand your vision, budget, and timeline" },
+              { step: "02", title: "Planning", desc: "Detailed project plan with design and specifications" },
+              { step: "03", title: "Execution", desc: "Professional construction with quality oversight" },
+              { step: "04", title: "Completion", desc: "Final inspection and project handover" }
+            ].map((item, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1 }}
+                className="relative"
+              >
+                <div className="bg-stone-50 rounded-lg p-3 md:p-8 border border-stone-200 text-center h-full">
+                  <div className="text-2xl md:text-5xl font-bold text-orange-600/20 mb-1 md:mb-2">{item.step}</div>
+                  <h3 className="text-sm md:text-xl font-bold text-gray-900 mb-1 md:mb-2">{item.title}</h3>
+                  <p className="text-gray-600 text-xs md:text-base">{item.desc}</p>
+                </div>
+                {idx < 3 && (
+                  <div className="hidden lg:block absolute top-1/2 -right-4 transform -translate-y-1/2">
+                    <ArrowRight className="text-orange-600" size={24} />
+                  </div>
+                )}
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ==================== FAQ SECTION ==================== */}
+      <section id="faq" className="py-12 md:py-20 lg:py-24 bg-stone-50">
+        <div className="max-w-4xl mx-auto px-4 md:px-6">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={textReveal}
+            className="text-center mb-10 md:mb-16"
+          >
+            <span className="text-orange-600 font-semibold tracking-wider text-sm">FAQ</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-black mt-3 md:mt-4 mb-3 md:mb-6">Frequently Asked Questions</h2>
+          </motion.div>
+
+          <div className="space-y-4 md:space-y-6">
+            {[
+              { q: "What is your payment structure?", a: "We typically require 30% upfront, 40% mid-project, and 30% upon completion. Flexible payment plans available for larger projects." },
+              { q: "How long do projects typically take?", a: "Project duration varies. Small projects: 2-3 months. Commercial: 6-12 months. We provide detailed timelines during planning." },
+              { q: "Do you offer warranties?", a: "Yes, all work comes with a 2-year structural warranty and 5-year foundation warranty. Additional warranty options available." },
+              { q: "Are you licensed and insured?", a: "Absolutely. NCA Level 8 registered, fully insured, and all work complies with Kenyan regulations and international standards." }
+            ].map((faq, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.05 }}
+                className="bg-white rounded-lg border border-stone-200 hover:border-orange-300 transition-all overflow-hidden"
+              >
+                <button
+                  onClick={() => setExpandedFAQ(expandedFAQ === idx ? null : idx)}
+                  className="w-full flex items-center justify-between p-6 md:p-8 text-left hover:bg-stone-50 transition-colors"
+                  aria-expanded={expandedFAQ === idx}
+                  aria-controls={`faq-answer-${idx}`}
+                >
+                  <h3 className="text-base md:text-lg font-bold text-gray-900 pr-4 flex-grow">{faq.q}</h3>
+                  <motion.div
+                    animate={{ rotate: expandedFAQ === idx ? 45 : 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="flex-shrink-0"
+                  >
+                    <div className="flex items-center justify-center h-8 w-8 rounded-lg bg-orange-600">
+                      <Plus className="text-white" size={20} />
+                    </div>
+                  </motion.div>
+                </button>
+                
+                <motion.div
+                  id={`faq-answer-${idx}`}
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{
+                    height: expandedFAQ === idx ? "auto" : 0,
+                    opacity: expandedFAQ === idx ? 1 : 0
+                  }}
+                  transition={{ duration: 0.3 }}
+                  className="overflow-hidden"
+                >
+                  <div className="px-6 md:px-8 pb-6 md:pb-8 pt-0 border-t border-stone-200">
+                    <p className="text-gray-600 text-sm md:text-base leading-relaxed">{faq.a}</p>
+                  </div>
+                </motion.div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ==================== CERTIFICATIONS SECTION ==================== */}
+      <section id="certifications" className="py-12 md:py-20 lg:py-24 bg-black text-white">
+        <div className="max-w-7xl mx-auto px-4 md:px-6">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={textReveal}
+            className="text-center mb-10 md:mb-16"
+          >
+            <span className="text-orange-600 font-semibold tracking-wider text-sm">CERTIFICATIONS & ACCREDITATION</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mt-3 md:mt-4 mb-3 md:mb-6">Industry Standards & Compliance</h2>
+          </motion.div>
+
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6 lg:gap-8">
+            {[
+              { title: "NCA Registered", desc: "Level 8 - Unlimited Project Value", icon: Award },
+              { title: "ISO 9001:2015", desc: "Quality Management System", icon: CheckCircle },
+              { title: "OSHA Compliance", desc: "Occupational Safety Standards", icon: Shield },
+              { title: "ERB Certified", desc: "Environmental & Regulatory Body", icon: Zap }
+            ].map((cert, idx) => {
+              const Icon = cert.icon;
+              return (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: idx * 0.1 }}
+                  className="bg-stone-900 rounded-lg p-3 md:p-8 border border-stone-800 text-center hover:border-orange-600/50 transition-all"
+                >
+                  <Icon className="text-orange-600 mx-auto mb-2 md:mb-4" size={24} />
+                  <h3 className="text-xs md:text-xl font-bold mb-1 md:mb-2">{cert.title}</h3>
+                  <p className="text-gray-400 text-xs md:text-base">{cert.desc}</p>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ==================== NEWSLETTER SECTION ==================== */}
+      <section className="py-12 md:py-16 bg-white border-t border-stone-200">
+        <div className="max-w-4xl mx-auto px-4 md:px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center"
+          >
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3 md:mb-4">Stay Updated</h2>
+            <p className="text-gray-600 text-sm md:text-base mb-6 md:mb-8">Subscribe to our newsletter for construction tips, project updates, and industry insights.</p>
+            <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className="flex-grow px-4 md:px-6 py-3 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-orange-600 border border-stone-300 text-sm md:text-base"
+              />
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-orange-600 text-white px-6 md:px-8 py-3 rounded-lg font-semibold hover:bg-orange-700 transition-all whitespace-nowrap"
+              >
+                Subscribe
+              </motion.button>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ==================== COOKIE CONSENT BANNER ==================== */}
+      <AnimatePresence>
+        {showCookieBanner && (
+          <motion.div
+            initial={{ y: 100, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: 100, opacity: 0 }}
+            transition={{ delay: 2 }}
+            className="fixed bottom-0 left-0 right-0 bg-black text-white p-4 md:p-6 border-t border-stone-800 z-40"
+          >
+            <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+              <p className="text-xs md:text-sm text-gray-300">
+                We use cookies to enhance your experience. By continuing, you consent to our use of cookies.
+                <a href="#privacy" className="text-orange-500 hover:text-orange-400 ml-2 underline">Learn more</a>
+              </p>
+              <div className="flex gap-3 flex-shrink-0">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => setShowCookieBanner(false)}
+                  className="px-4 md:px-6 py-2 border border-gray-600 rounded-lg text-xs md:text-sm hover:border-gray-400 transition"
+                >
+                  Decline
+                </motion.button>
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => setShowCookieBanner(false)}
+                  className="px-4 md:px-6 py-2 bg-orange-600 rounded-lg text-xs md:text-sm hover:bg-orange-700 transition"
+                >
+                  Accept
+                </motion.button>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* ==================== ENTERPRISE FOOTER ==================== */}
-      <footer className="bg-black text-white py-16">
+      <footer className="bg-black text-white py-12 md:py-16">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
             {/* Company Info */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              <div className="flex items-center gap-3 mb-6">
+              <div className="flex items-center gap-3 mb-4">
                 <motion.div 
-                  className="w-10 h-10 bg-orange-500 rounded-lg flex items-center justify-center"
+                  className="w-10 h-10 bg-orange-600 rounded-lg flex items-center justify-center flex-shrink-0"
                   whileHover={{ rotate: 360 }}
                   transition={{ duration: 0.5 }}
                 >
-                  <Building2 size={24} />
+                  <Building2 size={22} />
                 </motion.div>
-                <div>
-                  <div className="font-bold text-xl">{COMPANY.shortName}</div>
-                  <div className="text-xs text-gray-400">Building Since {COMPANY.founded}</div>
+                <div className="min-w-0">
+                  <div className="font-bold text-base md:text-lg">{COMPANY.shortName}</div>
+                  <div className="text-xs text-gray-400">Est. {COMPANY.founded}</div>
                 </div>
               </div>
-              <p className="text-gray-400 mb-6">{COMPANY.tagline}</p>
-              <p className="text-gray-500 text-sm mb-6">{COMPANY.motto}</p>
+              <p className="text-gray-400 text-sm mb-4">{COMPANY.tagline}</p>
+              <p className="text-gray-500 text-xs mb-4">{COMPANY.motto}</p>
               <div className="flex gap-4">
                 {[Instagram, Twitter, Linkedin].map((Icon, idx) => (
                   <motion.a
@@ -1394,8 +1974,9 @@ export default function EnterpriseConstructionPage() {
                     whileHover={{ y: -3 }}
                     href="#"
                     className="text-gray-400 hover:text-orange-500 transition"
+                    title={["Instagram", "Twitter", "LinkedIn"][idx]}
                   >
-                    <Icon size={20} />
+                    <Icon size={18} />
                   </motion.a>
                 ))}
               </div>
@@ -1408,13 +1989,13 @@ export default function EnterpriseConstructionPage() {
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
             >
-              <h4 className="font-bold text-lg mb-6 text-white">Quick Links</h4>
-              <ul className="space-y-3">
+              <h4 className="font-bold text-base md:text-lg mb-4 text-white">Quick Links</h4>
+              <ul className="space-y-2">
                 {NAV_LINKS.slice(0, 4).map((link) => (
                   <li key={link.title}>
-                    <a href={link.href} className="text-gray-400 hover:text-orange-500 transition flex items-center">
-                      <ChevronRight className="mr-2" size={14} />
-                      {link.title}
+                    <a href={link.href} className="text-gray-400 hover:text-orange-500 transition text-sm flex items-center gap-2">
+                      <ChevronRight size={14} className="flex-shrink-0" />
+                      <span className="truncate">{link.title}</span>
                     </a>
                   </li>
                 ))}
@@ -1428,13 +2009,13 @@ export default function EnterpriseConstructionPage() {
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
             >
-              <h4 className="font-bold text-lg mb-6 text-white">Our Services</h4>
-              <ul className="space-y-3">
+              <h4 className="font-bold text-base md:text-lg mb-4 text-white">Our Services</h4>
+              <ul className="space-y-2">
                 {SERVICES.slice(0, 5).map((service) => (
                   <li key={service.title}>
-                    <a href="#services" className="text-gray-400 hover:text-orange-500 transition flex items-center">
-                      <ChevronRight className="mr-2" size={14} />
-                      {service.title}
+                    <a href="#services" className="text-gray-400 hover:text-orange-500 transition text-sm flex items-center gap-2">
+                      <ChevronRight size={14} className="flex-shrink-0" />
+                      <span className="truncate">{service.title}</span>
                     </a>
                   </li>
                 ))}
@@ -1448,23 +2029,23 @@ export default function EnterpriseConstructionPage() {
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
             >
-              <h4 className="font-bold text-lg mb-6 text-white">Contact Information</h4>
-              <div className="space-y-4">
-                <div className="flex items-start gap-3">
-                  <MapPin className="text-orange-500 mt-1" size={18} />
-                  <span className="text-gray-400 text-sm">{COMPANY.location}</span>
+              <h4 className="font-bold text-base md:text-lg mb-4 text-white">Contact</h4>
+              <div className="space-y-3">
+                <div className="flex items-start gap-2">
+                  <MapPin className="text-orange-600 mt-0.5 flex-shrink-0" size={16} />
+                  <span className="text-gray-400 text-sm line-clamp-2">{COMPANY.location}</span>
                 </div>
-                <div className="flex items-start gap-3">
-                  <Phone className="text-orange-500 mt-1" size={18} />
-                  <span className="text-gray-400">{COMPANY.phone}</span>
+                <div className="flex items-center gap-2">
+                  <Phone className="text-orange-600 flex-shrink-0" size={16} />
+                  <a href={`tel:${COMPANY.phone}`} className="text-gray-400 hover:text-orange-500 text-sm">{COMPANY.phone}</a>
                 </div>
-                <div className="flex items-start gap-3">
-                  <Mail className="text-orange-500 mt-1" size={18} />
-                  <span className="text-gray-400">{COMPANY.email}</span>
+                <div className="flex items-center gap-2">
+                  <Mail className="text-orange-600 flex-shrink-0" size={16} />
+                  <a href={`mailto:${COMPANY.email}`} className="text-gray-400 hover:text-orange-500 text-sm truncate">{COMPANY.email}</a>
                 </div>
-                <div className="flex items-start gap-3">
-                  <HelpCircle className="text-orange-500 mt-1" size={18} />
-                  <span className="text-gray-400 text-sm">24/7 Emergency Support Available</span>
+                <div className="flex items-start gap-2">
+                  <HelpCircle className="text-orange-600 mt-0.5 flex-shrink-0" size={16} />
+                  <span className="text-gray-400 text-xs">24/7 Support</span>
                 </div>
               </div>
             </motion.div>
@@ -1474,89 +2055,127 @@ export default function EnterpriseConstructionPage() {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="border-t border-stone-800 mt-12 pt-8"
+            className="border-t border-gray-800 mt-8 md:mt-12 pt-6 md:pt-8"
           >
-            <div className="flex flex-col md:flex-row justify-between items-center">
-              <p className="text-gray-500 text-sm">
+            <div className="flex flex-col sm:flex-row justify-between items-center gap-4 mb-4">
+              <p className="text-gray-500 text-xs md:text-sm text-center sm:text-left">
                 © {new Date().getFullYear()} {COMPANY.name}. All rights reserved.
               </p>
-              <div className="flex gap-6 mt-4 md:mt-0">
+              <div className="flex flex-wrap gap-3 md:gap-6 justify-center">
                 {["Privacy Policy", "Terms of Service", "Cookie Policy"].map((item, idx) => (
                   <motion.a
                     key={idx}
                     whileHover={{ scale: 1.05 }}
                     href="#"
-                    className="text-gray-500 hover:text-orange-500 text-sm"
+                    className="text-gray-500 hover:text-orange-500 text-xs md:text-sm"
                   >
                     {item}
                   </motion.a>
                 ))}
               </div>
             </div>
-            <p className="text-gray-600 text-xs mt-4 text-center">
+            <p className="text-gray-600 text-xs text-center leading-relaxed">
               Registered with National Construction Authority • ERB Certified • ISO 9001:2015 Certified • OSHA Compliant
             </p>
           </motion.div>
         </div>
       </footer>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu Overlay */}
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 bg-black/50 z-40 lg:hidden"
+            onClick={() => setMenuOpen(false)}
+          />
+        )}
+      </AnimatePresence>
+
+      {/* Mobile Menu Panel */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
-            transition={{ type: "tween" }}
-            className="fixed inset-0 bg-black z-50 lg:hidden p-6 pt-20"
+            transition={{ type: "spring", stiffness: 300, damping: 30 }}
+            className="fixed right-0 top-0 h-screen w-80 max-w-[90vw] bg-white z-50 lg:hidden flex flex-col shadow-2xl"
           >
-            <button
-              className="absolute top-6 right-6 text-white"
-              onClick={() => setMenuOpen(false)}
-            >
-              <X size={28} />
-            </button>
+            {/* Menu Header */}
+            <div className="flex justify-between items-center p-6 border-b border-gray-100">
+              <h3 className="font-bold text-lg text-gray-900">Menu</h3>
+              <motion.button
+                whileTap={{ scale: 0.95 }}
+                className="text-gray-600 hover:text-orange-600 transition-colors p-1"
+                onClick={() => setMenuOpen(false)}
+              >
+                <X size={24} />
+              </motion.button>
+            </div>
 
-            <ul className="space-y-6">
-              {NAV_LINKS.map((link) => (
-                <li key={link.title}>
-                  <a
-                    href={link.href}
-                    className="text-white text-xl font-semibold hover:text-orange-500 block py-3 border-b border-stone-800"
-                    onClick={() => setMenuOpen(false)}
-                  >
-                    {link.title}
-                  </a>
-                  {link.dropdown && (
-                    <div className="pl-4 mt-2 space-y-2">
-                      {link.dropdown.map((sub) => (
-                        <a
-                          key={sub.name}
-                          href={sub.href}
-                          className="text-gray-400 hover:text-orange-500 block py-2"
-                          onClick={() => setMenuOpen(false)}
-                        >
-                          {sub.name}
-                        </a>
-                      ))}
-                    </div>
-                  )}
-                </li>
-              ))}
-            </ul>
+            {/* Menu Content */}
+            <div className="flex-1 overflow-y-auto">
+              <ul className="space-y-1 p-6">
+                {NAV_LINKS.map((link, idx) => (
+                  <li key={link.title}>
+                    <motion.a
+                      initial={{ opacity: 0, x: -10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: idx * 0.05 }}
+                      href={link.href}
+                      className="text-gray-700 text-base font-semibold hover:text-orange-600 block py-3 px-3 rounded-lg hover:bg-orange-50 transition-all"
+                      onClick={() => setMenuOpen(false)}
+                    >
+                      {link.title}
+                    </motion.a>
+                    {link.dropdown && (
+                      <motion.div 
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: idx * 0.05 + 0.05 }}
+                        className="pl-4 mt-1 space-y-1"
+                      >
+                        {link.dropdown.map((sub) => (
+                          <a
+                            key={sub.name}
+                            href={sub.href}
+                            className="text-gray-600 text-sm hover:text-orange-600 block py-2 px-3 rounded-lg hover:bg-orange-50 transition-all"
+                            onClick={() => setMenuOpen(false)}
+                          >
+                            {sub.name}
+                          </a>
+                        ))}
+                      </motion.div>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-            <div className="mt-12 pt-8 border-t border-stone-800 space-y-6">
-              <button className="w-full bg-orange-500 text-white py-4 rounded-lg font-semibold">
-                Request Quote
-              </button>
-              <div className="text-gray-400 space-y-4">
-                <div className="flex items-center gap-3">
-                  <Phone size={18} />
-                  <span>{COMPANY.phone}</span>
+            {/* Menu Footer */}
+            <div className="p-6 border-t border-gray-100 space-y-4">
+              <motion.a
+                href="#contact"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="w-full bg-orange-600 text-white py-3 rounded-lg font-semibold text-center hover:bg-orange-700 transition-all flex items-center justify-center gap-2"
+                onClick={() => setMenuOpen(false)}
+              >
+                <PhoneIcon size={18} />
+                Get Quote
+              </motion.a>
+              <div className="space-y-3 text-sm">
+                <div className="flex items-center gap-3 text-gray-600 hover:text-orange-600 transition cursor-pointer">
+                  <Phone size={16} className="text-orange-600 flex-shrink-0" />
+                  <a href={`tel:${COMPANY.phone}`} className="font-medium">{COMPANY.phone}</a>
                 </div>
-                <div className="flex items-center gap-3">
-                  <Mail size={18} />
-                  <span>{COMPANY.email}</span>
+                <div className="flex items-center gap-3 text-gray-600 hover:text-orange-600 transition cursor-pointer">
+                  <Mail size={16} className="text-orange-600 flex-shrink-0" />
+                  <a href={`mailto:${COMPANY.email}`} className="font-medium truncate">{COMPANY.email}</a>
                 </div>
               </div>
             </div>
