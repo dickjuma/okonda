@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { Toaster } from "react-hot-toast";
 
 const inter = Inter({ 
   subsets: ["latin"],
@@ -115,6 +116,46 @@ export default function RootLayout({
         />
       </head>
       <body className={`${inter.className} antialiased bg-white text-gray-800 overflow-x-hidden`} suppressHydrationWarning>
+        {/* Toast Notifications */}
+        <Toaster 
+          position="top-right"
+          toastOptions={{
+            duration: 4000,
+            style: {
+              background: '#1F2937',
+              color: '#FFF',
+              fontSize: '14px',
+              borderRadius: '8px',
+              boxShadow: '0 10px 40px rgba(0, 0, 0, 0.3)',
+              padding: '16px 20px',
+              fontWeight: '500',
+            },
+            success: {
+              style: {
+                background: '#10B981',
+              },
+              iconTheme: {
+                primary: '#FFF',
+                secondary: '#10B981',
+              },
+            },
+            error: {
+              style: {
+                background: '#EF4444',
+              },
+              iconTheme: {
+                primary: '#FFF',
+                secondary: '#EF4444',
+              },
+            },
+            loading: {
+              style: {
+                background: '#F97316',
+              },
+            },
+          }}
+        />
+        
         {/* Smooth scroll progress indicator */}
         <div className="fixed top-0 left-0 w-full h-1 z-50 bg-transparent">
           <div className="h-full bg-orange-500 transition-all duration-300 ease-out" 

@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import toast from "react-hot-toast";
 import {
   Mail,
   Instagram,
@@ -62,7 +63,7 @@ const COMPANY = {
   tagline: "Structurally sound, sustainably designed.",
   motto: "Building trust, Designing future.",
   location: "Hill Side Estate, Opposite Kenya Creameries Company, Kapsoya Eldoret, Uasin Gishu County, Kenya",
-  founded: "2013",
+  founded: "2021",
   certifications: ["Structural Design", "Project Management", "Engineering Consultancy"]
 };
 
@@ -219,7 +220,7 @@ const TEAM_MEMBERS = [
   {
     name: "Praisefaith Sikuku ",
     position: "Constructional Manager ",
-    qualifications: "MArch, RIBA Certified",
+    qualifications: "Architectural Design",
     experience: "12+ years",
     expertise: ["Architectural Design", "Sustainable Building", "3D Modeling"],
     image: "/teams/member3.jpg",
@@ -456,6 +457,11 @@ export default function EnterpriseConstructionPage() {
   const [expandedFAQ, setExpandedFAQ] = useState<number | null>(0);
   const [showCookieBanner, setShowCookieBanner] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
+  const [showConfirmModal, setShowConfirmModal] = useState(false);
+  const [showContactModal, setShowContactModal] = useState(false);
+  const [showPackageQuoteModal, setShowPackageQuoteModal] = useState(false);
+  const [selectedPackage, setSelectedPackage] = useState<any>(null);
+  const [pendingAction, setPendingAction] = useState<{ type: string; href: string } | null>(null);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -463,6 +469,11 @@ export default function EnterpriseConstructionPage() {
     company: "",
     projectType: "",
     message: ""
+  });
+  const [packageQuoteData, setPackageQuoteData] = useState({
+    email: "",
+    phone: "",
+    location: ""
   });
 
   useEffect(() => {
@@ -497,8 +508,182 @@ export default function EnterpriseConstructionPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    alert("Thank you for your inquiry. Our team will contact you within 24 hours.");
+    
+    // Validation
+    if (!formData.name.trim()) {
+      toast.error("Please enter your full name", {
+        icon: "⚠️",
+      });
+      return;
+    }
+    if (!formData.email.trim()) {
+      toast.error("Please enter your email address", {
+        icon: "⚠️",
+      });
+      return;
+    }
+    if (!formData.phone.trim()) {
+      toast.error("Please enter your phone number", {
+        icon: "⚠️",
+      });
+      return;
+    }
+    if (!formData.projectType.trim()) {
+      toast.error("Please select a project type", {
+        icon: "⚠️",
+      });
+      return;
+    }
+    if (!formData.message.trim()) {
+      toast.error("Please enter your project details", {
+        icon: "⚠️",
+      });
+      return;
+    }
+
+    // Show confirmation modal
+    setShowConfirmModal(true);
+  };
+
+  const confirmSubmit = async () => {
+    const loadingToast = toast.loading("Submitting your inquiry and sending confirmation email...", {
+      icon: "📤",
+    });
+
+    try {
+      // Send email via API
+      const response = await fetch('/api/send-inquiry', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Failed to send email');
+      }
+
+      toast.dismiss(loadingToast);
+      
+      // Success toast with details
+      toast.success(
+        (t) => (
+          <div className="flex flex-col gap-2">
+            <span className="font-semibold">✅ Inquiry Submitted Successfully!</span>
+            <span className="text-sm">Confirmation email sent to {formData.email}</span>
+            <span className="text-xs opacity-90">We'll contact you within 24 hours.</span>
+          </div>
+        ),
+        {
+          duration: 5000,
+        }
+      );
+
+      // Reset form
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        company: "",
+        projectType: "",
+        message: ""
+      });
+      setShowConfirmModal(false);
+    } catch (error) {
+      toast.dismiss(loadingToast);
+      toast.error(error instanceof Error ? error.message : "Failed to submit inquiry. Please try again.", {
+        icon: "❌",
+      });
+    }
+  };
+
+  const handleContactMethodClick = (type: string, href: string) => {
+    setPendingAction({ type, href });
+    setShowContactModal(true);
+  };
+
+  const handlePackageQuote = (pkg: any) => {
+    setSelectedPackage(pkg);
+    setPackageQuoteData({ email: "", phone: "", location: "" });
+    setShowPackageQuoteModal(true);
+  };
+
+  const submitPackageQuote = async () => {
+    // Validation
+    if (!packageQuoteData.email.trim()) {
+      toast.error("Please enter your email address", { icon: "⚠️" });
+      return;
+    }
+    if (!packageQuoteData.phone.trim()) {
+      toast.error("Please enter your phone number", { icon: "⚠️" });
+      return;
+    }
+    if (!packageQuoteData.location.trim()) {
+      toast.error("Please enter your location", { icon: "⚠️" });
+      return;
+    }
+
+    const loadingToast = toast.loading("Sending package quote request...", { icon: "📤" });
+
+    try {
+      const response = await fetch('/api/send-inquiry', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: "Package Quote Request",
+          email: packageQuoteData.email,
+          phone: packageQuoteData.phone,
+          company: "",
+          projectType: selectedPackage.title,
+          message: `Location: ${packageQuoteData.location}\n\nPackage: ${selectedPackage.title}\nPrice: ${selectedPackage.price}\nDescription: ${selectedPackage.desc}`
+        }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Failed to send quote request');
+      }
+
+      toast.dismiss(loadingToast);
+      toast.success(
+        (t) => (
+          <div className="flex flex-col gap-2">
+            <span className="font-semibold">✅ Quote Request Sent!</span>
+            <span className="text-sm">Confirmation sent to {packageQuoteData.email}</span>
+            <span className="text-xs opacity-90">We'll contact you within 24 hours.</span>
+          </div>
+        ),
+        { duration: 5000 }
+      );
+
+      setShowPackageQuoteModal(false);
+      setPackageQuoteData({ email: "", phone: "", location: "" });
+    } catch (error) {
+      toast.dismiss(loadingToast);
+      toast.error(error instanceof Error ? error.message : "Failed to send quote request", { icon: "❌" });
+    }
+  };
+
+  const confirmContactAction = () => {
+    if (pendingAction) {
+      const actionType = pendingAction.type;
+      
+      if (actionType === "email") {
+        toast.success("Opening email client...", {
+          icon: "📧",
+        });
+      } else if (actionType === "phone") {
+        toast.success("Opening dialer...", {
+          icon: "☎️",
+        });
+      }
+
+      window.location.href = pendingAction.href;
+      setShowContactModal(false);
+      setPendingAction(null);
+    }
   };
 
   const fadeUp = {
@@ -674,15 +859,15 @@ export default function EnterpriseConstructionPage() {
 
         {/* Main Navigation Bar */}
         <div className="max-w-7xl mx-auto px-4 md:px-6 py-4">
-          <div className="flex justify-between items-center gap-4">
-            {/* Logo Section */}
+          <div className="flex items-center gap-4">
+            {/* Logo Section - Far Left */}
             <motion.a 
               href="#home" 
               whileHover={{ scale: 1.02 }}
               className="flex items-center gap-2 md:gap-3 flex-shrink-0 cursor-pointer"
             >
-              <div className="w-10 md:w-11 h-10 md:h-11 bg-orange-600 rounded-lg flex items-center justify-center shadow-md hover:shadow-lg transition-shadow">
-                <Building2 className="text-white" size={20} />
+              <div className="w-10 md:w-11 h-10 md:h-11 rounded-lg flex items-center justify-center shadow-md hover:shadow-lg transition-shadow overflow-hidden">
+                <img src="/teams/logo.jpeg" alt="BiLOR Logo" className="w-full h-full object-cover" />
               </div>
               <div className="hidden sm:flex flex-col">
                 <span className="font-bold text-xs md:text-sm text-gray-900 leading-tight">{COMPANY.shortName}</span>
@@ -719,7 +904,7 @@ export default function EnterpriseConstructionPage() {
             </div>
 
             {/* Desktop Navigation Links */}
-            <ul className="hidden lg:flex items-center gap-1">
+            <ul className="hidden lg:flex items-center gap-1 ml-auto">
               {NAV_LINKS.map((link) => (
                 <li
                   key={link.title}
@@ -1474,12 +1659,37 @@ export default function EnterpriseConstructionPage() {
               
               <div className="space-y-5 md:space-y-8">
                 {[
-                  { icon: PhoneCall, title: "Call Us", detail: COMPANY.phone, sub: "Mon-Fri: 8AM-6PM, Sat: 9AM-1PM" },
-                  { icon: Mail, title: "Email Us", detail: COMPANY.email, sub: "Response within 24 hours" },
+                  { icon: PhoneCall, title: "Call Us", detail: COMPANY.phone, sub: "Mon-Fri: 8AM-6PM, Sat: 9AM-1PM", type: "phone", href: `tel:${COMPANY.phone}` },
+                  { icon: Mail, title: "Email Us", detail: COMPANY.email, sub: "Response within 24 hours", type: "email", href: `mailto:${COMPANY.email}` },
                   { icon: MapPin, title: "Visit Our Office", detail: COMPANY.location, sub: "" },
                   { icon: FileText, title: "Request Documents", detail: "", sub: "Download Company Profile" }
                 ].map((item, idx) => {
                   const Icon = item.icon;
+                  
+                  // If item has type (phone or email), render with modal confirmation
+                  if (item.type) {
+                    return (
+                      <motion.div
+                        key={idx}
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: idx * 0.1 }}
+                        onClick={() => handleContactMethodClick(item.type!, item.href!)}
+                        className="flex items-start gap-3 md:gap-4 cursor-pointer hover:opacity-80 transition group"
+                      >
+                        <div className="p-2 md:p-3 bg-black rounded-lg flex-shrink-0 group-hover:bg-orange-600 transition">
+                          <Icon className="text-orange-600 group-hover:text-white transition" size={20} />
+                        </div>
+                        <div className="min-w-0">
+                          <h4 className="font-bold text-black text-base md:text-lg mb-1 md:mb-2 group-hover:text-orange-600 transition">{item.title}</h4>
+                          {item.detail && <p className="text-gray-600 text-sm md:text-base break-words group-hover:text-orange-600 transition">{item.detail}</p>}
+                          {item.sub && <p className="text-gray-500 text-xs md:text-sm">{item.sub}</p>}
+                        </div>
+                      </motion.div>
+                    );
+                  }
+                  
                   return (
                     <motion.div
                       key={idx}
@@ -1705,6 +1915,8 @@ export default function EnterpriseConstructionPage() {
                 </ul>
                 <motion.button
                   whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => handlePackageQuote(pkg)}
                   className={`w-full py-2 md:py-3 rounded-lg font-semibold text-xs md:text-base transition-all ${
                     idx === 2
                       ? "bg-orange-600 text-white hover:bg-orange-700"
@@ -1954,11 +2166,11 @@ export default function EnterpriseConstructionPage() {
             >
               <div className="flex items-center gap-3 mb-4">
                 <motion.div 
-                  className="w-10 h-10 bg-orange-600 rounded-lg flex items-center justify-center flex-shrink-0"
+                  className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 overflow-hidden"
                   whileHover={{ rotate: 360 }}
                   transition={{ duration: 0.5 }}
                 >
-                  <Building2 size={22} />
+                  <img src="/teams/logo.jpeg" alt="BiLOR Logo" className="w-full h-full object-cover" />
                 </motion.div>
                 <div className="min-w-0">
                   <div className="font-bold text-base md:text-lg">{COMPANY.shortName}</div>
@@ -2179,6 +2391,260 @@ export default function EnterpriseConstructionPage() {
                 </div>
               </div>
             </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* ==================== FORM CONFIRMATION MODAL ==================== */}
+      <AnimatePresence>
+        {showConfirmModal && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4"
+            onClick={() => setShowConfirmModal(false)}
+          >
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              className="bg-white rounded-2xl shadow-2xl max-w-md w-full p-6 md:p-8 border border-orange-100"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="text-center mb-6">
+                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-orange-100 mb-4">
+                  <CheckCircle className="text-orange-600" size={32} />
+                </div>
+                <h3 className="text-2xl font-bold text-black mb-2">Confirm Submission</h3>
+                <p className="text-gray-600 text-sm">Please review your project details before submitting.</p>
+              </div>
+
+              <div className="bg-stone-50 rounded-lg p-4 mb-6 space-y-3 text-sm">
+                <div className="flex justify-between items-start">
+                  <span className="text-gray-600 font-medium">Name:</span>
+                  <span className="text-black font-semibold text-right flex-1 ml-3">{formData.name}</span>
+                </div>
+                <div className="h-px bg-stone-200" />
+                <div className="flex justify-between items-start">
+                  <span className="text-gray-600 font-medium">Email:</span>
+                  <span className="text-black font-semibold text-right flex-1 ml-3">{formData.email}</span>
+                </div>
+                <div className="h-px bg-stone-200" />
+                <div className="flex justify-between items-start">
+                  <span className="text-gray-600 font-medium">Phone:</span>
+                  <span className="text-black font-semibold text-right flex-1 ml-3">{formData.phone}</span>
+                </div>
+                <div className="h-px bg-stone-200" />
+                <div className="flex justify-between items-start">
+                  <span className="text-gray-600 font-medium">Project Type:</span>
+                  <span className="text-black font-semibold text-right flex-1 ml-3 capitalize">{formData.projectType}</span>
+                </div>
+              </div>
+
+              <div className="flex gap-3">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => setShowConfirmModal(false)}
+                  className="flex-1 px-4 py-3 border border-gray-300 text-black rounded-lg font-semibold hover:bg-gray-50 transition"
+                >
+                  Cancel
+                </motion.button>
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={confirmSubmit}
+                  className="flex-1 px-4 py-3 bg-orange-600 text-white rounded-lg font-semibold hover:bg-orange-700 transition flex items-center justify-center gap-2"
+                >
+                  <Send size={16} />
+                  Confirm & Send
+                </motion.button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* ==================== CONTACT METHOD CONFIRMATION MODAL ==================== */}
+      <AnimatePresence>
+        {showContactModal && pendingAction && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4"
+            onClick={() => setShowContactModal(false)}
+          >
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              className="bg-white rounded-2xl shadow-2xl max-w-md w-full p-6 md:p-8 border border-orange-100"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="text-center mb-6">
+                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-blue-100 mb-4">
+                  {pendingAction.type === "email" ? (
+                    <Mail className="text-blue-600" size={32} />
+                  ) : (
+                    <PhoneCall className="text-blue-600" size={32} />
+                  )}
+                </div>
+                <h3 className="text-2xl font-bold text-black mb-2">
+                  {pendingAction.type === "email" ? "Send Email?" : "Make a Call?"}
+                </h3>
+                <p className="text-gray-600 text-sm">
+                  {pendingAction.type === "email"
+                    ? "Open your default email client to contact BiLOR Engineering"
+                    : "Initiate a call with BiLOR Engineering"}
+                </p>
+              </div>
+
+              <div className="bg-stone-50 rounded-lg p-4 mb-6">
+                <p className="text-center font-mono font-semibold text-black text-lg">
+                  {pendingAction.type === "email" ? COMPANY.email : COMPANY.phone}
+                </p>
+              </div>
+
+              <div className="space-y-2 text-xs text-gray-500 mb-6">
+                <p>✓ Direct communication with our team</p>
+                <p>✓ Quick response time</p>
+                <p>✓ Secure connection</p>
+              </div>
+
+              <div className="flex gap-3">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => setShowContactModal(false)}
+                  className="flex-1 px-4 py-3 border border-gray-300 text-black rounded-lg font-semibold hover:bg-gray-50 transition"
+                >
+                  Cancel
+                </motion.button>
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={confirmContactAction}
+                  className="flex-1 px-4 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition flex items-center justify-center gap-2"
+                >
+                  {pendingAction.type === "email" ? (
+                    <>
+                      <Mail size={16} />
+                      Open Email
+                    </>
+                  ) : (
+                    <>
+                      <PhoneCall size={16} />
+                      Call Now
+                    </>
+                  )}
+                </motion.button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* ==================== PACKAGE QUOTE REQUEST MODAL ==================== */}
+      <AnimatePresence>
+        {showPackageQuoteModal && selectedPackage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4"
+            onClick={() => setShowPackageQuoteModal(false)}
+          >
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              className="bg-white rounded-2xl shadow-2xl max-w-md w-full p-6 md:p-8 border border-orange-100"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="text-center mb-6">
+                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-orange-100 mb-4">
+                  <DollarSign className="text-orange-600" size={32} />
+                </div>
+                <h3 className="text-2xl font-bold text-black mb-2">Get Quote</h3>
+                <p className="text-gray-600 text-sm">Interested in this package?</p>
+              </div>
+
+              {/* Package Details */}
+              <div className="bg-stone-50 rounded-lg p-4 mb-6 border border-orange-200">
+                <div className="flex items-start justify-between mb-2">
+                  <h4 className="font-bold text-black text-lg">{selectedPackage.title}</h4>
+                  <span className="text-orange-600 font-bold text-xl">{selectedPackage.price}</span>
+                </div>
+                <p className="text-gray-600 text-sm mb-3">{selectedPackage.desc}</p>
+                <ul className="space-y-1">
+                  {selectedPackage.features.slice(0, 3).map((feature: string, i: number) => (
+                    <li key={i} className="flex items-start gap-2 text-xs text-gray-700">
+                      <Check size={14} className="text-orange-600 flex-shrink-0 mt-0.5" />
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Contact Info Form */}
+              <div className="space-y-4 mb-6">
+                <div>
+                  <label className="block text-sm font-semibold text-gray-700 mb-1">Email *</label>
+                  <input
+                    type="email"
+                    value={packageQuoteData.email}
+                    onChange={(e) => setPackageQuoteData({ ...packageQuoteData, email: e.target.value })}
+                    placeholder="your@email.com"
+                    className="w-full px-4 py-2 border border-stone-300 rounded-lg focus:ring-2 focus:ring-orange-600 focus:border-transparent outline-none text-sm"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-semibold text-gray-700 mb-1">Phone *</label>
+                  <input
+                    type="tel"
+                    value={packageQuoteData.phone}
+                    onChange={(e) => setPackageQuoteData({ ...packageQuoteData, phone: e.target.value })}
+                    placeholder="0712345678"
+                    className="w-full px-4 py-2 border border-stone-300 rounded-lg focus:ring-2 focus:ring-orange-600 focus:border-transparent outline-none text-sm"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-semibold text-gray-700 mb-1">Location *</label>
+                  <input
+                    type="text"
+                    value={packageQuoteData.location}
+                    onChange={(e) => setPackageQuoteData({ ...packageQuoteData, location: e.target.value })}
+                    placeholder="Your project location"
+                    className="w-full px-4 py-2 border border-stone-300 rounded-lg focus:ring-2 focus:ring-orange-600 focus:border-transparent outline-none text-sm"
+                  />
+                </div>
+              </div>
+
+              <div className="flex gap-3">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => setShowPackageQuoteModal(false)}
+                  className="flex-1 px-4 py-3 border border-gray-300 text-black rounded-lg font-semibold hover:bg-gray-50 transition"
+                >
+                  Cancel
+                </motion.button>
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={submitPackageQuote}
+                  className="flex-1 px-4 py-3 bg-orange-600 text-white rounded-lg font-semibold hover:bg-orange-700 transition flex items-center justify-center gap-2"
+                >
+                  <Send size={16} />
+                  Request Quote
+                </motion.button>
+              </div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
