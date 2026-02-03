@@ -1,0 +1,10 @@
+Invoice Number,Client,Date,Due Date,Status,Total Amount,Paid Amount,Balance,Currency,Payment Method,Notes
+"INV-03313516","Hillary omondi","2025-12-29","2026-01-01","paid","8900","0","8900","KES","N/A","to pay"
+"INV-03412975","Brivian Atindu","2025-12-28","2026-01-27","paid","130","0","130","KES","N/A",""
+"00ADDFB3","Brivian Atindu","2025-12-28","N/A","Paid","0","0","0","KES","N/A",""
+"INV-03331228","Brivian Atindu","2025-12-28","2026-01-22","paid","800","0","800","KES","N/A",""
+"56F740ED","Dickson juma","2025-12-22","N/A","Paid","0","0","0","KES","N/A",""
+"D8C5BE2E","Dickson juma","2025-12-22","N/A","Paid","0","0","0","KES","N/A",""
+"8A92B4E1","Dickson juma","2025-12-22","N/A","Paid","0","0","0","USD","N/A",""
+"8A92B68D","loran","2025-12-22","N/A","Paid","0","0","0","USD","N/A",""
+"758C9353","N/A","2025-12-21","N/A","Not Paid","0","0","0","USD","N/A",""
