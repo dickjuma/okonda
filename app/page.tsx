@@ -209,7 +209,7 @@ const PROJECTS = [
 
 const TEAM_MEMBERS = [
   {
-    name: "Eng. Lorraine Okonda ",
+    name: "Eng. Lorrian Okonda ",
     position: "CEO & Founder",
     qualifications: "Civil  Engineering & Structural Engineerinng ",
     experience: "2+ years",
