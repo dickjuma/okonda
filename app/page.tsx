@@ -466,6 +466,7 @@ export default function EnterpriseConstructionPage() {
   const [showCookieBanner, setShowCookieBanner] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isPageTransitioning, setIsPageTransitioning] = useState(false);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [showContactModal, setShowContactModal] = useState(false);
   const [showPackageQuoteModal, setShowPackageQuoteModal] = useState(false);
@@ -511,7 +512,53 @@ export default function EnterpriseConstructionPage() {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);  const handleSubmit = (e: React.FormEvent) => {
+  }, []);
+
+  const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    const href = e.currentTarget.getAttribute("href");
+    if (href?.startsWith("#")) {
+      e.preventDefault();
+      
+      // Start page transition effect
+      setIsPageTransitioning(true);
+      
+      // Wait a brief moment before scrolling for the transition effect
+      setTimeout(() => {
+        const element = document.getElementById(href.substring(1));
+        if (element) {
+          const offset = 150; // Account for fixed header
+          const targetPosition = element.getBoundingClientRect().top + window.scrollY - offset;
+          const startPosition = window.scrollY;
+          const distance = targetPosition - startPosition;
+          const duration = 1500; // Duration in milliseconds (1.5 seconds for slower scroll)
+          let start: number | null = null;
+
+          const easeInOutQuad = (t: number) => {
+            return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+          };
+
+          const animation = (currentTime: number) => {
+            if (start === null) start = currentTime;
+            const elapsed = currentTime - start;
+            const progress = Math.min(elapsed / duration, 1);
+            const ease = easeInOutQuad(progress);
+            window.scrollTo(0, startPosition + distance * ease);
+
+            if (progress < 1) {
+              requestAnimationFrame(animation);
+            } else {
+              // End transition after scroll completes
+              setTimeout(() => setIsPageTransitioning(false), 300);
+            }
+          };
+
+          requestAnimationFrame(animation);
+        }
+      }, 300); // 300ms delay for transition effect
+    }
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
     // Validation
@@ -808,6 +855,38 @@ export default function EnterpriseConstructionPage() {
 
   return (
     <main className="scroll-smooth bg-white text-gray-800 font-sans overflow-x-hidden">
+      {/* Page Transition Overlay */}
+      <AnimatePresence>
+        {isPageTransitioning && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-40 bg-gradient-to-b from-white via-stone-50 to-white pointer-events-none"
+          />
+        )}
+      </AnimatePresence>
+
+      {/* Loading Progress Indicator */}
+      {isPageTransitioning && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50"
+        >
+          <div className="flex flex-col items-center gap-4">
+            <motion.div
+              animate={{ rotate: 360 }}
+              transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
+              className="w-12 h-12 border-3 border-orange-200 border-t-orange-600 rounded-full"
+            />
+            <p className="text-sm font-semibold text-stone-600">Loading page...</p>
+          </div>
+        </motion.div>
+      )}
+
       {/* ==================== ENTERPRISE NAVBAR ==================== */}
       <nav className={`fixed w-full z-50 transition-all duration-300 ${
         isScrolled ? "bg-white shadow-lg border-b border-stone-200" : "bg-white/95 border-b border-stone-100"
@@ -938,6 +1017,7 @@ export default function EnterpriseConstructionPage() {
                 >
                   <motion.a
                     href={link.href}
+                    onClick={handleSmoothScroll}
                     whileHover={{ y: -2 }}
                     className={`px-4 py-2.5 text-sm font-semibold uppercase tracking-wider transition-all duration-300 rounded-lg inline-flex items-center gap-2 ${
                       activeSection === link.href?.replace('#', '') 
@@ -962,6 +1042,7 @@ export default function EnterpriseConstructionPage() {
                         <motion.a
                           key={sub.name}
                           href={sub.href}
+                          onClick={handleSmoothScroll}
                           whileHover={{ x: 4 }}
                           className="block px-5 py-3 text-stone-700 hover:bg-orange-50 hover:text-orange-600 text-sm font-semibold transition-colors border-b border-stone-100 last:border-b-0"
                         >
@@ -1068,6 +1149,7 @@ export default function EnterpriseConstructionPage() {
                 {/* Primary CTA - Orange Button */}
                 <motion.a
                   href="#contact"
+                  onClick={handleSmoothScroll}
                   whileHover={{ scale: 1.1, y: -3 }}
                   whileTap={{ scale: 0.95 }}
                   className="group inline-flex items-center justify-center gap-2 bg-orange-600 hover:bg-orange-700 text-white font-bold text-sm md:text-base px-6 md:px-8 py-2.5 md:py-3 rounded-lg transition-all duration-300 shadow-lg hover:shadow-2xl cursor-pointer"
@@ -1084,6 +1166,7 @@ export default function EnterpriseConstructionPage() {
                 {/* Secondary CTA - Outlined Button */}
                 <motion.a
                   href="#projects"
+                  onClick={handleSmoothScroll}
                   whileHover={{ scale: 1.1, y: -3 }}
                   whileTap={{ scale: 0.95 }}
                   className="group inline-flex items-center justify-center gap-2 border-2 border-white/70 hover:border-white text-white font-bold text-sm md:text-base px-6 md:px-8 py-2.5 md:py-3 rounded-lg backdrop-blur-sm hover:bg-white/10 transition-all duration-300 cursor-pointer"
@@ -2362,8 +2445,11 @@ export default function EnterpriseConstructionPage() {
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: idx * 0.05 }}
                       href={link.href}
+                      onClick={(e) => {
+                        handleSmoothScroll(e);
+                        setMenuOpen(false);
+                      }}
                       className="text-gray-700 text-base font-semibold hover:text-orange-600 block py-3 px-3 rounded-lg hover:bg-orange-50 transition-all"
-                      onClick={() => setMenuOpen(false)}
                     >
                       {link.title}
                     </motion.a>
@@ -2379,7 +2465,10 @@ export default function EnterpriseConstructionPage() {
                             key={sub.name}
                             href={sub.href}
                             className="text-gray-600 text-sm hover:text-orange-600 block py-2 px-3 rounded-lg hover:bg-orange-50 transition-all"
-                            onClick={() => setMenuOpen(false)}
+                            onClick={(e) => {
+                              handleSmoothScroll(e);
+                              setMenuOpen(false);
+                            }}
                           >
                             {sub.name}
                           </a>
@@ -2395,10 +2484,13 @@ export default function EnterpriseConstructionPage() {
             <div className="p-6 border-t border-gray-100 space-y-4">
               <motion.a
                 href="#contact"
+                onClick={(e) => {
+                  handleSmoothScroll(e);
+                  setMenuOpen(false);
+                }}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 className="w-full bg-orange-600 text-white py-3 rounded-lg font-semibold text-center hover:bg-orange-700 transition-all flex items-center justify-center gap-2"
-                onClick={() => setMenuOpen(false)}
               >
                 <PhoneIcon size={18} />
                 Get Quote

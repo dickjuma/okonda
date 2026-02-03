@@ -158,9 +158,11 @@ export default function RootLayout({
         
         {/* Smooth scroll progress indicator */}
         <div className="fixed top-0 left-0 w-full h-1 z-50 bg-transparent">
-          <div className="h-full bg-orange-500 transition-all duration-300 ease-out" 
+          <div 
+               className="h-full bg-orange-500 transition-all duration-300 ease-out" 
                style={{ width: '0%' }}
-               id="progress-bar"></div>
+               id="progress-bar"
+               suppressHydrationWarning={true}></div>
         </div>
         
         {children}
